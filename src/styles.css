@@ -12,13 +12,24 @@ html, body, app-root {
     flex-direction: column;
 }
 
-.header, .footer {
+app-header, app-footer {
     flex: 0 0 auto;
-    background-color: aqua;
-    height: 200px;
 }
 
 .content {
     flex: 1 1 auto;
     padding: 0 50px;
+}
+
+button {
+    border: none;
+}
+
+button:focus {
+    outline: none;
+}
+
+app-header {
+    position: sticky;
+    top: 0;
 }

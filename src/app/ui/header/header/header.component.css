@@ -1,0 +1,51 @@
+header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    background-color: #832736;
+    height: 50px;
+
+}
+
+.logo {
+    display: flex;
+    flex-direction: row;
+    flex: 3 3 20%;
+    justify-content: center;
+    color: #FFFFFF;
+    font-family: Papyrus, Arial, sans-serif;
+    font-size: 22pt;
+}
+
+.logo span {
+    color: #FBECD8;
+}
+
+.main-menu {
+    display: flex;
+    flex: 1 1 60%;
+    justify-content: center;
+}
+
+.main-menu-button {
+    background: none;
+    color: #FFFFFF;
+    font-size: 12pt;
+    min-width: 100px;
+}
+
+a:hover, .profile:hover {
+    color: #FBECD8;
+}
+
+.profile {
+    display: flex;
+    flex: 3 3 20%;
+    justify-content: center;
+    color: #FFFFFF;
+}
+
+a {
+    color: #FFFFFF;
+    text-decoration: none;
+}

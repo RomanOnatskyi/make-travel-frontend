@@ -1,0 +1,45 @@
+footer {
+    color: #FFFFFF;
+    margin-top: 200px;
+    font-family: Arial, sans-serif;
+}
+
+.top-footer-section {
+    display: flex;
+    background-color: #832736;
+    height: 250px;
+}
+
+.footer-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100px;
+    font-size: 10pt;
+    margin: 50px 0 0 100px;
+}
+
+.section-header {
+    font-size: 13pt;
+}
+
+.google-play, .google-play img {
+    width: 150px;
+}
+
+.bottom-footer-section {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #3C070E;
+    height: 30px;
+    font-size: 9pt;
+}
+
+.footer-logo {
+    align-items: flex-end;
+    width: 100%;
+    margin-right: 100px;
+    font-size: 16pt;
+    font-family: Papyrus, Arial, sans-serif;
+}
