@@ -90,6 +90,22 @@
             </div>
         </div>
 
+        <div class="auth-form-item">
+            <label for="password-check">Подтвердите пароль</label>
+            <input type="password"
+                #passwordCheck="ngModel"
+                id="password-check"
+                name="password-check"
+                required
+                [pattern]="password.value"
+                ngModel>
+
+            <div class="validation-warning" *ngIf="passwordCheck.invalid && (passwordCheck.dirty || passwordCheck.touched)">
+                <div *ngIf="passwordCheck.errors.required">Заполните это поле!</div>
+                <div *ngIf="passwordCheck.errors.pattern">Пароли не совпадают</div>
+            </div>
+        </div>
+
         <div *ngIf="signUp" class="auth-form-captcha-item">
             <label for="captcha">Введите символы на картинке</label>
 

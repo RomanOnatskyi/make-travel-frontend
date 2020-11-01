@@ -35,11 +35,11 @@ export class AuthContentComponent implements OnInit {
     ngOnInit(): void {
 
         this.user = {
-            // login: '',
-            // password: '',
+            login: '',
+            password: '',
 
-            login: 'qqqq',
-            password: 'qsf6Fui27g',
+            // login: 'qqqq',
+            // password: 'qsf6Fui27g',
             // passport: '111111',
             // name: 'qqq',
             // email: '111@eee.com',
@@ -50,42 +50,43 @@ export class AuthContentComponent implements OnInit {
 
     submitAuth(): void {
 
-        console.log('sent: ', this.user);
-
         this.submitting = true;
 
-        this.httpClient.post("http://localhost:3000/testResponse", this.user)
-            .subscribe(result => {
+        // TODO: проверить капчу
 
-                    console.log('result: ', result);
-                    this.errors = result["errors"];
+        let requestUrl: string;
+        if (this.signUp) {
+            requestUrl = "localhost:8080/maketravel/users/register"
+        }
+        else {
+            requestUrl = "localhost:8080/maketravel/users/login";
+        }
 
-                    setTimeout(() => {
+        // this.httpClient.get(`http://localhost:3000/profile?login=${this.user.login}`)
+        // this.httpClient.post(`http://localhost:3000/posts`, this.user)
+        this.httpClient.post(requestUrl, this.user)
+            .subscribe(response => {
 
-                        this.submitting = false;
-                    }, 3000);
+                // TODO: сохранить токен
+                const token = response['token'] ? response['token'] : '';
 
-                    // this.submitting = false;
+                this.submitting = false;
 
-                if (this.errors) {
-                    alert(`Произошла ошибка:\n ${this.errors}`)
+                if (response['status']) {
+                    this.errors = response['errors'];
+
+                    alert(`Произошла ошибка:\n${this.errors}`);
                     return;
                 }
 
-                    this.route.navigateByUrl('')
-                },
-                error => {
+                this.route.navigateByUrl('');
+            },
+            error => {
 
-                    this.errors = error.message;
-                    alert(`Произошла ошибка:\n ${this.errors}`)
+                this.errors = error.message;
+                alert(`Произошла ошибка:\n${this.errors}`);
 
-                    setTimeout(() => {
-
-                        this.submitting = false;
-                    }, 3000);
-
-                    // this.submitting = false;
-                },
-            );
+                this.submitting = false;
+            });
     }
 }

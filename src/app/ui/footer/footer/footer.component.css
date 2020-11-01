@@ -6,8 +6,9 @@ footer {
 
 .top-footer-section {
     display: flex;
+    align-items: center;
     background-color: #832736;
-    height: 250px;
+    height: 200px;
 }
 
 .footer-content {
@@ -16,7 +17,7 @@ footer {
     justify-content: space-between;
     height: 100px;
     font-size: 10pt;
-    margin: 50px 0 0 100px;
+    margin-left: 100px;
 }
 
 .section-header {

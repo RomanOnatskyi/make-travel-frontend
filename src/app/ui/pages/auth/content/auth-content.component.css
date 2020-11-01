@@ -54,6 +54,7 @@ input {
     border: #FBECD8 solid 1px;
     border-radius: 7px;
     cursor: pointer;
+    min-width: 70px;
 }
 
 .auth-form-submit-item button:disabled, .form-submitting {
