@@ -29,6 +29,33 @@ input {
     border: none;
     border-radius: 5px;
 }
+.errors {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: #FF0000;
+    margin: 0 70px;
+    padding: 10px;
+    border: #FBECD8 solid 1px;
+    border-radius: 6px;
+    text-align: justify;
+    transition: 3s;
+}
+
+.errors-text {
+    color: #FFFFFF;
+}
+
+.errors-button {
+    height: 20px;
+    width: 60px;
+    margin-top: 10px;
+    color: #FBECD8;
+    background: none;
+    border: #FBECD8 solid 1px;
+    border-radius: 7px;
+    cursor: pointer;
+}
 
 .auth-form {
     color: #FFFFFF;
@@ -82,6 +109,6 @@ input {
 }
 
 .validation-warning {
-    color: #ff0000;
+    color: #FF0000;
     margin-top: 5px;
 }

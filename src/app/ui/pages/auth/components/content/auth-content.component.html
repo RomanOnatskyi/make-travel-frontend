@@ -6,10 +6,20 @@
         <hr>
     </div>
 
+    <div *ngIf="errors" class="errors">
+        <div>Ошибка!</div>
+        <div class="errors-text">{{ errors }}</div>
+
+        <button class="errors-button"
+            type="button"
+            (click)="authState.errors = null">Ок
+        </button>
+    </div>
+
     <form #form="ngForm"
         class="auth-form"
         novalidate
-        (ngSubmit)="submitAuth()">
+        (ngSubmit)="submit.emit()">
         <div class="auth-form-item">
             <label for="login">Логин</label>
             <input type="text"
@@ -123,18 +133,18 @@
 
             <div class="validation-warning" *ngIf="captcha.invalid && (captcha.dirty || captcha.touched)">
                 <div *ngIf="captcha.errors.required">Заполните это поле!</div>
-                <div *ngIf="captcha.errors.pattern">Символы в не совпадают с картинкой</div>
+                <div *ngIf="captcha.errors.pattern">Введенные символы не совпадают с картинкой</div>
             </div>
         </div>
 
         <div class="auth-form-submit-item">
             <button type="submit"
-                [ngClass]="{ formSubmitting: submitting }"
-                [disabled]="form.invalid || submitting">
+                [ngClass]="{ formSubmitting: processing }"
+                [disabled]="form.invalid || processing">
 
-                <span *ngIf="submitting" class="">Обработка..</span>
-                <span *ngIf="!submitting && signUp" class="">Зарегистрироваться</span>
-                <span *ngIf="!submitting && signIn" class="">Войти</span>
+                <span *ngIf="processing" class="">Обработка..</span>
+                <span *ngIf="!processing && signUp" class="">Зарегистрироваться</span>
+                <span *ngIf="!processing && signIn" class="">Войти</span>
             </button>
         </div>
     </form>
