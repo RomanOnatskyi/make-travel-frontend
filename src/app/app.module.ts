@@ -4,7 +4,7 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { HeaderModule } from './ui/header/header.module';
 import { AppRoutingModule } from './app-routing.module';
-import { SignInModule } from './ui/pages/sign-in/sign-in.module';
+import { AuthModule } from './ui/pages/auth/auth.module';
 import { FooterModule } from './ui/footer/footer.module';
 
 @NgModule({
@@ -15,7 +15,7 @@ import { FooterModule } from './ui/footer/footer.module';
         BrowserModule,
         AppRoutingModule,
         HeaderModule,
-        SignInModule,
+        AuthModule,
         FooterModule,
     ],
     providers: [],

@@ -34,15 +34,19 @@ header {
     min-width: 100px;
 }
 
-a:hover, .profile:hover {
+a:hover {
     color: #FBECD8;
 }
 
-.profile {
+.authorization {
     display: flex;
     flex: 3 3 20%;
     justify-content: center;
     color: #FFFFFF;
+}
+
+.authorization-items {
+    margin-left: 20px;
 }
 
 a {

@@ -7,18 +7,23 @@ html, body, app-root {
     flex-direction: column;
 }
 
-.header, .content .footer {
+app-header, app-footer {
     display: flex;
     flex-direction: column;
-}
-
-app-header, app-footer {
     flex: 0 0 auto;
 }
 
-.content {
+/* pages content */
+app-sign-up, app-sign-in {
+    display: flex;
+    flex-direction: column;
     flex: 1 1 auto;
-    padding: 0 50px;
+    align-items: center;
+}
+
+app-header {
+    position: sticky;
+    top: 0;
 }
 
 button {
@@ -27,9 +32,4 @@ button {
 
 button:focus {
     outline: none;
-}
-
-app-header {
-    position: sticky;
-    top: 0;
 }
