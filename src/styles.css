@@ -14,7 +14,7 @@ app-header, app-footer {
 }
 
 /* pages content */
-app-sign-up, app-sign-in {
+app-main, app-sign-up, app-sign-in {
     display: flex;
     flex-direction: column;
     flex: 1 1 auto;

@@ -2,10 +2,11 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
-import { HeaderModule } from './ui/header/header.module';
 import { AppRoutingModule } from './app-routing.module';
-import { AuthModule } from './ui/pages/auth/auth.module';
+import { HeaderModule } from './ui/header/header.module';
 import { FooterModule } from './ui/footer/footer.module';
+import { MainModule } from './ui/pages/main/main.module';
+import { AuthModule } from './ui/pages/auth/auth.module';
 
 @NgModule({
     declarations: [
@@ -15,8 +16,9 @@ import { FooterModule } from './ui/footer/footer.module';
         BrowserModule,
         AppRoutingModule,
         HeaderModule,
-        AuthModule,
         FooterModule,
+        MainModule,
+        AuthModule,
     ],
     providers: [],
     bootstrap: [AppComponent],
