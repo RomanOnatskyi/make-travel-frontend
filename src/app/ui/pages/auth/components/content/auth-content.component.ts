@@ -17,11 +17,11 @@ export class AuthContentComponent implements OnInit {
     get signUp() { return this.authState.action == "sign-up"; }
     get signIn() { return this.authState.action == "sign-in"; }
 
+    // todo: remove captchaPattern
     captchaPattern: string;
 
     ngOnInit(): void {
 
-        // todo: remove captchaPattern
         this.captchaPattern = "3cyunR";
     }
 }

@@ -100,7 +100,7 @@
             </div>
         </div>
 
-        <div class="auth-form-item">
+        <div *ngIf="signUp" class="auth-form-item">
             <label for="password-check">Подтвердите пароль</label>
             <input type="password"
                 #passwordCheck="ngModel"

@@ -1,6 +1,6 @@
 import { AuthState } from './ui/pages/auth/auth-state';
 
-export const baseUrl = "localhost:8080/maketravel";
+export const baseUrl = "http://localhost:8080/maketravel/api";
 
 export class AppState {
 

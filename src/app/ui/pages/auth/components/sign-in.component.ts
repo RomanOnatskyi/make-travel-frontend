@@ -38,11 +38,11 @@ export class SignInComponent implements OnInit {
         this.authService.signIn(this.authState.user)
             .subscribe(
                 response => {
-                    console.log(`Response: ${response.errors}`);
+
+                    console.log('55: response.errors =', response.errors);
                     this.handleResponse(response);
                 },
                 error => {
-                    console.log(`Error: ${error}`);
                     this.handleErrors(error);
                 },
             );
@@ -52,6 +52,8 @@ export class SignInComponent implements OnInit {
 
         this.authState.processing = false;
         this.authState.errors = response.errors;
+
+        console.log('55: response.errors =', response.errors);
 
         if (!this.authState.errors) {
 
