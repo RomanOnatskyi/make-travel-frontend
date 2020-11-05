@@ -12,14 +12,13 @@
 
         <button class="errors-button"
             type="button"
-            (click)="authState.errors = null">Ок
+            (click)="dismissErrors.emit()">Ок
         </button>
     </div>
 
     <form #form="ngForm"
         class="auth-form"
-        novalidate
-        (ngSubmit)="submit.emit()">
+        novalidate>
         <div class="auth-form-item">
             <label for="login">Логин</label>
             <input type="text"
@@ -30,7 +29,8 @@
                 pattern=".{3,20}"
                 [(ngModel)]="user.login">
 
-            <div class="validation-warning" *ngIf="login.invalid && (login.dirty || login.touched)">
+            <div *ngIf="login.invalid && (login.dirty || login.touched)"
+                class="validation-warning">
                 <div *ngIf="login.errors.required">Заполните это поле!</div>
                 <div *ngIf="login.errors.pattern">Допускается от 3-х до 20-ти символов</div>
             </div>
@@ -46,7 +46,8 @@
                 pattern="[a-zA-Zа-яА-Яёіїє -]{3,50}"
                 [(ngModel)]="user.name">
 
-            <div class="validation-warning" *ngIf="name.invalid && (name.dirty || name.touched)">
+            <div *ngIf="name.invalid && (name.dirty || name.touched)"
+                class="validation-warning">
                 <div *ngIf="name.errors.required">Заполните это поле!</div>
                 <div *ngIf="name.errors.pattern">Допускается от 3-х до 50-ти букв, пробелы и дефис</div>
             </div>
@@ -62,7 +63,8 @@
                 pattern="[\w\.]+\@\w+\.+\w+"
                 [(ngModel)]="user.email">
 
-            <div class="validation-warning" *ngIf="email.invalid && (email.dirty || email.touched)">
+            <div *ngIf="email.invalid && (email.dirty || email.touched)"
+                class="validation-warning">
                 <div *ngIf="email.errors.required">Заполните это поле!</div>
                 <div *ngIf="email.errors.pattern">Вы должны ввести электронную почту</div>
             </div>
@@ -78,7 +80,8 @@
                 pattern="[A-Z]*[\d]*"
                 [(ngModel)]="user.passport">
 
-            <div class="validation-warning" *ngIf="passport.invalid && (passport.dirty || passport.touched)">
+            <div *ngIf="passport.invalid && (passport.dirty || passport.touched)"
+                class="validation-warning">
                 <div *ngIf="passport.errors.required">Заполните это поле!</div>
                 <div *ngIf="passport.errors.pattern">Вы должны ввести правильный номер загранпаспорта</div>
             </div>
@@ -94,7 +97,8 @@
                 pattern="(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{6,}"
                 [(ngModel)]="user.password">
 
-            <div class="validation-warning" *ngIf="password.invalid && (password.dirty || password.touched)">
+            <div *ngIf="password.invalid && (password.dirty || password.touched)"
+                class="validation-warning">
                 <div *ngIf="password.errors.required">Заполните это поле!</div>
                 <div *ngIf="password.errors.pattern">Пароль должен содержать минимум 6 латинских букв, одну заглавную букву и цифру</div>
             </div>
@@ -110,7 +114,8 @@
                 [pattern]="password.value"
                 ngModel>
 
-            <div class="validation-warning" *ngIf="passwordCheck.invalid && (passwordCheck.dirty || passwordCheck.touched)">
+            <div *ngIf="passwordCheck.invalid && (passwordCheck.dirty || passwordCheck.touched)"
+                class="validation-warning">
                 <div *ngIf="passwordCheck.errors.required">Заполните это поле!</div>
                 <div *ngIf="passwordCheck.errors.pattern">Пароли не совпадают</div>
             </div>
@@ -131,7 +136,8 @@
                 ngModel
                 [pattern]="captchaPattern">
 
-            <div class="validation-warning" *ngIf="captcha.invalid && (captcha.dirty || captcha.touched)">
+            <div *ngIf="captcha.invalid && (captcha.dirty || captcha.touched)"
+                class="validation-warning">
                 <div *ngIf="captcha.errors.required">Заполните это поле!</div>
                 <div *ngIf="captcha.errors.pattern">Введенные символы не совпадают с картинкой</div>
             </div>
@@ -140,11 +146,12 @@
         <div class="auth-form-submit-item">
             <button type="submit"
                 [ngClass]="{ formSubmitting: processing }"
-                [disabled]="form.invalid || processing">
+                [disabled]="form.invalid || processing"
+                (click)="submit.emit()">
 
-                <span *ngIf="processing" class="">Обработка..</span>
-                <span *ngIf="!processing && signUp" class="">Зарегистрироваться</span>
-                <span *ngIf="!processing && signIn" class="">Войти</span>
+                <span *ngIf="processing">Обработка..</span>
+                <span *ngIf="!processing && signUp">Зарегистрироваться</span>
+                <span *ngIf="!processing && signIn">Войти</span>
             </button>
         </div>
     </form>

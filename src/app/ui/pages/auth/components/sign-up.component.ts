@@ -1,19 +1,23 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { AppStateService } from '../../../../app-state.service';
 import { AuthService } from '../auth.service';
 import { AuthResponse } from '../auth-response';
-import { User } from '../auth-state';
+import { SignUpUser } from '../users';
 
 @Component({
     selector: 'app-sign-up',
     template: `
         <app-auth-content
-            [authState]="authState"
+            action="sign-up"
+            [user]="user"
+            [processing]="processing"
+            [errors]="errors"
+            (dismissErrors)="errors = null"
             (submit)="submit()">
         </app-auth-content>`,
 })
-export class SignUpComponent implements OnInit {
+export class SignUpComponent {
 
     constructor(
         private router: Router,
@@ -21,39 +25,26 @@ export class SignUpComponent implements OnInit {
         private authService: AuthService,
     ) {}
 
-    get authState() { return this.appStateService.authState; }
-
-    ngOnInit() {
-
-        this.authState.action = "sign-up";
-    }
+    user = new SignUpUser();
+    processing: boolean = false;
+    errors: string = null;
 
     submit() {
 
-        this.authState.processing = true;
+        this.processing = true;
 
-        this.authService.signUp(this.authState.user)
-            .subscribe(
-                response => this.handleResponse(response),
-                error => this.handleErrors(error),
-            );
+        this.authService.signUp(this.user)
+            .subscribe(response => this.handleResponse(response));
     }
 
     private handleResponse(response: AuthResponse) {
 
-        this.authState.processing = false;
-        this.authState.errors = response.errors;
+        this.processing = false;
+        this.errors = response.errors;
 
-        if (!this.authState.errors) {
+        if (!this.errors) {
 
-            this.authState.user = new User();
-            this.router.navigateByUrl('');
+            this.router.navigateByUrl('auth/sign-in');
         }
-    }
-
-    private handleErrors(error) {
-
-        this.authState.processing = false;
-        this.authState.errors = error.message;
     }
 }

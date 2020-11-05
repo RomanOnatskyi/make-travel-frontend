@@ -1,73 +1,57 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { AppStateService } from '../../../../app-state.service';
+import { AppStateService, UserRole } from '../../../../app-state.service';
 import { AuthService } from '../auth.service';
 import { AuthResponse } from '../auth-response';
-import { User } from '../auth-state';
+import { SignInUser } from '../users';
 
 @Component({
     selector: 'app-sign-in',
     template: `
         <app-auth-content
-            [authState]="authState"
+            action="sign-in"
+            [user]="user"
+            [processing]="processing"
+            [errors]="errors"
+            (dismissErrors)="errors = null"
             (submit)="submit()">
         </app-auth-content>`,
 })
-export class SignInComponent implements OnInit {
+export class SignInComponent {
 
     constructor(
         private router: Router,
         private appStateService: AppStateService,
         private authService: AuthService,
-    ) {
-    }
+    ) {}
 
-    get authState() {
-        return this.appStateService.authState;
-    }
-
-    ngOnInit() {
-
-        this.authState.action = 'sign-in';
-    }
+    user = new SignInUser();
+    processing: boolean = false;
+    errors: string = null;
 
     submit() {
 
-        this.authState.processing = true;
+        this.processing = true;
 
-        this.authService.signIn(this.authState.user)
-            .subscribe(
-                response => {
-
-                    console.log('55: response.errors =', response.errors);
-                    this.handleResponse(response);
-                },
-                error => {
-                    this.handleErrors(error);
-                },
-            );
+        this.authService.signIn(this.user)
+            .subscribe(response => this.handleResponse(response));
     }
 
     private handleResponse(response: AuthResponse) {
 
-        this.authState.processing = false;
-        this.authState.errors = response.errors;
+        this.processing = false;
+        this.errors = response.errors;
 
-        console.log('55: response.errors =', response.errors);
-
-        if (!this.authState.errors) {
+        if (!this.errors) {
 
             // TODO: сохранить токен
             const token = response.token || '';
 
-            this.authState.user = new User();
-            this.router.navigateByUrl('');
+            // TODO: присвоить пользователю роль
+            // this.appStateService.appState.currentUser = response.userRole as UserRole;
+            this.appStateService.appState.currentUser = UserRole.Client;
+
+            this.router.navigateByUrl('main');
         }
-    }
-
-    private handleErrors(error) {
-
-        this.authState.processing = false;
-        this.authState.errors = error.message;
     }
 }

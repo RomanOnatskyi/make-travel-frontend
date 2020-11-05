@@ -1,5 +1,7 @@
 import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
-import { AuthState } from '../../auth-state';
+import { SignInUser, SignUpUser } from '../../users';
+
+export type AuthAction = "sign-up" | "sign-in";
 
 @Component({
     selector: 'app-auth-content',
@@ -8,14 +10,16 @@ import { AuthState } from '../../auth-state';
 })
 export class AuthContentComponent implements OnInit {
 
-    @Input() authState: AuthState;
+    @Input() action: AuthAction;
+    @Input() user: SignInUser | SignUpUser;
+    @Input() processing: boolean;
+    @Input() errors: string;
+
+    @Output() dismissErrors = new EventEmitter<void>();
     @Output() submit = new EventEmitter<void>();
 
-    get user() { return this.authState.user; }
-    get processing() { return this.authState.processing; }
-    get errors() { return this.authState.errors; }
-    get signUp() { return this.authState.action == "sign-up"; }
-    get signIn() { return this.authState.action == "sign-in"; }
+    get signUp() { return this.action == "sign-up"; }
+    get signIn() { return this.action == "sign-in"; }
 
     // todo: remove captchaPattern
     captchaPattern: string;

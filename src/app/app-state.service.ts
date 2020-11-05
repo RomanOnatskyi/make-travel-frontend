@@ -1,13 +1,26 @@
 import { Injectable } from '@angular/core';
-import { AppState } from './app-state';
-import { AuthState } from './ui/pages/auth/auth-state';
 
 @Injectable({
     providedIn: 'root',
 })
 export class AppStateService {
 
-    private appState = new AppState();
+    private state = new AppState();
 
-    get authState() { return this.appState.authState; }
+    get appState() { return this.state; }
+}
+
+export class AppState {
+
+    currentUser: UserRole = UserRole.Unauthorized;
+    baseUrl = "http://localhost:8080/maketravel/api";
+}
+
+export enum UserRole {
+
+    Unauthorized = "Unauthorized",
+    Client = "Client",
+    Employee = "Employee",
+    HotelAdmin = "HotelAdmin",
+    SystemAdmin = "SystemAdmin",
 }

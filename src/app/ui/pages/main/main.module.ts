@@ -9,5 +9,4 @@ import { MainComponent } from './main/main.component';
         CommonModule,
     ],
 })
-export class MainModule {
-}
+export class MainModule {}

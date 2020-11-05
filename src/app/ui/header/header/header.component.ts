@@ -1,15 +1,18 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { AppStateService, UserRole } from '../../../app-state.service';
 
 @Component({
-  selector: 'app-header',
-  templateUrl: './header.component.html',
-  styleUrls: ['./header.component.css']
+    selector: 'app-header',
+    templateUrl: './header.component.html',
+    styleUrls: ['./header.component.css'],
 })
-export class HeaderComponent implements OnInit {
+export class HeaderComponent {
 
-  constructor() { }
+    constructor(
+        private appStateService: AppStateService,
+    ) {}
 
-  ngOnInit(): void {
-  }
+    get currentUser() { return this.appStateService.appState.currentUser; }
 
+    UserRole = UserRole;
 }
