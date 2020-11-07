@@ -42,16 +42,18 @@ export class SignInComponent {
         this.processing = false;
         this.errors = response.errors;
 
-        if (!this.errors) {
-
-            // TODO: сохранить токен
-            const token = response.token || '';
-
-            // TODO: присвоить пользователю роль
-            // this.appStateService.appState.currentUser = response.userRole as UserRole;
-            this.appStateService.appState.currentUser = UserRole.Client;
-
-            this.router.navigateByUrl('main');
+        if (this.errors) {
+            window.scrollTo(0, 0);
+            return;
         }
+
+        // TODO: сохранить токен
+        const token = response.token || '';
+
+        // TODO: присвоить пользователю роль
+        // this.appStateService.appState.currentUser = response.userRole as UserRole;
+        this.appStateService.appState.currentUser = UserRole.Client;
+
+        this.router.navigateByUrl('main');
     }
 }

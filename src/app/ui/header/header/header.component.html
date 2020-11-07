@@ -3,7 +3,7 @@
 </div>
 
 <header>
-    <a class="logo" routerLink="/main">
+    <a class="logo-section" routerLink="/main">
         Make<span>Travel</span>
     </a>
 
@@ -29,9 +29,14 @@
         </button>
     </div>
 
-<!--    <div *ngIf="currentUser == UserRole.Unauthorized"-->
-    <div class="authorization">
+    <div *ngIf="currentUser == UserRole.Unauthorized"
+        class="profile-section">
         <a class="authorization-items" routerLink="/auth/sign-up">Регистрация</a>
         <a class="authorization-items" routerLink="/auth/sign-in">Вход</a>
+    </div>
+
+    <div *ngIf="currentUser != UserRole.Unauthorized"
+        class="profile-section">
+        <a class="authorization-items" routerLink="/profile">Профиль</a>
     </div>
 </header>

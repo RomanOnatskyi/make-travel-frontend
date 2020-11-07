@@ -13,7 +13,7 @@ header {
     height: 50px;
 }
 
-.logo {
+.logo-section {
     display: flex;
     flex-direction: row;
     flex: 3 3 20%;
@@ -44,7 +44,7 @@ a:hover {
     color: #FBECD8;
 }
 
-.authorization {
+.profile-section {
     display: flex;
     flex: 3 3 20%;
     justify-content: center;

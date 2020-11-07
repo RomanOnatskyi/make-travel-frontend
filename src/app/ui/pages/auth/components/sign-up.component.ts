@@ -42,9 +42,11 @@ export class SignUpComponent {
         this.processing = false;
         this.errors = response.errors;
 
-        if (!this.errors) {
-
-            this.router.navigateByUrl('auth/sign-in');
+        if (this.errors) {
+            window.scrollTo(0, 0);
+            return;
         }
+
+        this.router.navigateByUrl('auth/sign-in');
     }
 }
