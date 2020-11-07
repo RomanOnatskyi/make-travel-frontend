@@ -1,0 +1,158 @@
+<div class="auth-content">
+    <div class="auth-header">
+        <hr>
+        <div *ngIf="signUp">Регистрация</div>
+        <div *ngIf="signIn">Вход</div>
+        <hr>
+    </div>
+
+    <div *ngIf="errors" class="errors">
+        <div>Ошибка!</div>
+        <div class="errors-text">{{ errors }}</div>
+
+        <button class="errors-button"
+            type="button"
+            (click)="dismissErrors.emit()">Ок
+        </button>
+    </div>
+
+    <form #form="ngForm"
+        class="auth-form"
+        novalidate>
+        <div class="auth-form-item">
+            <label for="login">Логин</label>
+            <input type="text"
+                #login="ngModel"
+                id="login"
+                name="login"
+                required
+                pattern=".{3,20}"
+                [(ngModel)]="user.login">
+
+            <div *ngIf="login.invalid && (login.dirty || login.touched)"
+                class="validation-warning">
+                <div *ngIf="login.errors.required">Заполните это поле!</div>
+                <div *ngIf="login.errors.pattern">Допускается от 3-х до 20-ти символов</div>
+            </div>
+        </div>
+
+        <div *ngIf="signUp" class="auth-form-item">
+            <label for="name">ФИО</label>
+            <input type="text"
+                #name="ngModel"
+                id="name"
+                name="name"
+                required
+                pattern="[a-zA-Zа-яА-Яёіїє -]{3,50}"
+                [(ngModel)]="user.name">
+
+            <div *ngIf="name.invalid && (name.dirty || name.touched)"
+                class="validation-warning">
+                <div *ngIf="name.errors.required">Заполните это поле!</div>
+                <div *ngIf="name.errors.pattern">Допускается от 3-х до 50-ти букв, пробелы и дефис</div>
+            </div>
+        </div>
+
+        <div *ngIf="signUp" class="auth-form-item">
+            <label for="email">Электронная почта</label>
+            <input type="email"
+                #email="ngModel"
+                id="email"
+                name="email"
+                required
+                pattern="[\w\.]+\@\w+\.+\w+"
+                [(ngModel)]="user.email">
+
+            <div *ngIf="email.invalid && (email.dirty || email.touched)"
+                class="validation-warning">
+                <div *ngIf="email.errors.required">Заполните это поле!</div>
+                <div *ngIf="email.errors.pattern">Вы должны ввести электронную почту</div>
+            </div>
+        </div>
+
+        <div *ngIf="signUp" class="auth-form-item">
+            <label for="passport">Номер загранпаспорта</label>
+            <input type="text"
+                #passport="ngModel"
+                id="passport"
+                name="passport"
+                required
+                pattern="[A-Z]*[\d]*"
+                [(ngModel)]="user.passport">
+
+            <div *ngIf="passport.invalid && (passport.dirty || passport.touched)"
+                class="validation-warning">
+                <div *ngIf="passport.errors.required">Заполните это поле!</div>
+                <div *ngIf="passport.errors.pattern">Вы должны ввести правильный номер загранпаспорта</div>
+            </div>
+        </div>
+
+        <div class="auth-form-item">
+            <label for="password">Пароль</label>
+            <input type="password"
+                #password="ngModel"
+                id="password"
+                name="password"
+                required
+                pattern="(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{6,}"
+                [(ngModel)]="user.password">
+
+            <div *ngIf="password.invalid && (password.dirty || password.touched)"
+                class="validation-warning">
+                <div *ngIf="password.errors.required">Заполните это поле!</div>
+                <div *ngIf="password.errors.pattern">Пароль должен содержать минимум 6 латинских букв, одну заглавную букву и цифру</div>
+            </div>
+        </div>
+
+        <div *ngIf="signUp" class="auth-form-item">
+            <label for="password-check">Подтвердите пароль</label>
+            <input type="password"
+                #passwordCheck="ngModel"
+                id="password-check"
+                name="password-check"
+                required
+                [pattern]="password.value"
+                ngModel>
+
+            <div *ngIf="passwordCheck.invalid && (passwordCheck.dirty || passwordCheck.touched)"
+                class="validation-warning">
+                <div *ngIf="passwordCheck.errors.required">Заполните это поле!</div>
+                <div *ngIf="passwordCheck.errors.pattern">Пароли не совпадают</div>
+            </div>
+        </div>
+
+        <div *ngIf="signUp" class="auth-form-captcha-item">
+            <label for="captcha">Введите символы на картинке</label>
+
+            <div class="captcha">
+                <img src="assets/img/captcha.png" alt="">
+            </div>
+
+            <input type="text"
+                #captcha="ngModel"
+                id="captcha"
+                name="captcha"
+                required
+                ngModel
+                [pattern]="captchaPattern">
+
+            <div *ngIf="captcha.invalid && (captcha.dirty || captcha.touched)"
+                class="validation-warning">
+                <div *ngIf="captcha.errors.required">Заполните это поле!</div>
+                <div *ngIf="captcha.errors.pattern">Введенные символы не совпадают с картинкой</div>
+            </div>
+        </div>
+
+        <div class="auth-form-submit-item">
+            <button type="submit"
+                [ngClass]="{ formSubmitting: processing }"
+                [disabled]="form.invalid || processing"
+                (click)="submit.emit()">
+
+                <span *ngIf="processing">Обработка..</span>
+                <span *ngIf="!processing && signUp">Зарегистрироваться</span>
+                <span *ngIf="!processing && signIn">Войти</span>
+            </button>
+        </div>
+    </form>
+</div>
