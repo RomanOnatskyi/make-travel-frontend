@@ -5,6 +5,7 @@ import { SignInUser, SignUpUser } from './users';
 import { AppStateService } from '../../../app-state.service';
 import { AuthResponse } from './auth-response';
 import { HandleError } from '../../../handle-error';
+import { CaptchaResponse } from './captcha-response';
 
 @Injectable({
     providedIn: 'root',
@@ -37,6 +38,13 @@ export class AuthService {
         const params = new HttpParams().set('values', JSON.stringify(user));
         return this.http.get<AuthResponse>(`${this.appState.baseUrl}/users/login`, { params }).pipe(
             catchError(HandleError<AuthResponse>('Signing in')),
+        );
+    }
+
+    getCaptcha() {
+
+        return this.http.get<CaptchaResponse>(`${this.appState.baseUrl}/captcha`).pipe(
+            catchError(HandleError<CaptchaResponse>('Getting captcha')),
         );
     }
 }

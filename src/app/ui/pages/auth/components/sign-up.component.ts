@@ -4,7 +4,6 @@ import { AppStateService } from '../../../../app-state.service';
 import { AuthService } from '../auth.service';
 import { AuthResponse } from '../auth-response';
 import { SignUpUser } from '../users';
-import { CaptchaService } from '../captcha.service';
 import { CaptchaResponse } from '../captcha-response';
 
 @Component({
@@ -29,7 +28,6 @@ export class SignUpComponent implements OnInit {
         private router: Router,
         private appStateService: AppStateService,
         private authService: AuthService,
-        private captchaService: CaptchaService,
     ) {}
 
     ngOnInit() {
@@ -45,7 +43,7 @@ export class SignUpComponent implements OnInit {
 
     updateCaptcha() {
 
-        this.captchaService.getCaptcha()
+        this.authService.getCaptcha()
             .subscribe(captcha => this.handleCaptchaResponse(captcha));
     }
 
