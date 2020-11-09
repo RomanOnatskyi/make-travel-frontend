@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AppStateService } from '../../../../app-state.service';
 import { AuthService } from '../auth.service';
@@ -12,7 +12,7 @@ import { CaptchaResponse } from '../captcha-response';
     template: `
         <app-auth-content
             action="sign-up"
-            captchaImage="sign-up"
+            [captchaImage]="captchaImage"
             [user]="user"
             [processing]="processing"
             [errors]="errors"
@@ -20,7 +20,7 @@ import { CaptchaResponse } from '../captcha-response';
             (submit)="submit()">
         </app-auth-content>`,
 })
-export class SignUpComponent {
+export class SignUpComponent implements OnInit {
 
     constructor(
         private router: Router,
@@ -29,12 +29,18 @@ export class SignUpComponent {
         private captchaService: CaptchaService,
     ) {}
 
+    ngOnInit() {
+
+        this.updateCaptcha();
+    }
+
     user = new SignUpUser();
     processing: boolean = false;
     errors: string = null;
-    captchaId: number;
+    captchaImage: any;
 
     updateCaptcha() {
+
         this.captchaService.getCaptcha()
             .subscribe(captcha => this.handleCaptchaResponse(captcha));
     }
@@ -44,16 +50,23 @@ export class SignUpComponent {
         this.processing = true;
 
         this.authService.signUp(this.user)
-            .subscribe(response => this.handleResponse(response));
+            .subscribe(response => this.handleAuthResponse(response));
     }
 
     private handleCaptchaResponse(captcha: CaptchaResponse) {
 
-        this.captchaId = captcha.captchaId;
+        this.errors = captcha.errors;
+        this.user.captchaId = captcha.captchaId;
+
+        // todo: convert captcha.captchaImage to image
         this.captchaImage = captcha.captchaImage;
+
+        if (this.errors) {
+            window.scrollTo(0, 0);
+        }
     }
 
-    private handleResponse(response: AuthResponse) {
+    private handleAuthResponse(response: AuthResponse) {
 
         this.errors = response.errors;
         this.processing = false;

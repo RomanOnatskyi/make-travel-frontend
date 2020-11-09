@@ -11,7 +11,7 @@ export type AuthAction = "sign-up" | "sign-in";
 export class AuthContentComponent implements OnInit {
 
     @Input() action: AuthAction;
-    @Input() captchaImage: AuthAction;
+    @Input() captchaImage: any;
     @Input() user: SignInUser | SignUpUser;
     @Input() processing: boolean;
     @Input() errors: string;
