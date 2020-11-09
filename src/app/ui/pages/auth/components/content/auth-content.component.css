@@ -34,7 +34,7 @@ input {
     flex-direction: column;
     align-items: center;
     color: #FF0000;
-    margin: 0 70px;
+    margin: 0 70px 10px 70px;
     padding: 10px;
     border: #FBECD8 solid 1px;
     border-radius: 6px;
@@ -54,7 +54,6 @@ input {
     background: none;
     border: #FBECD8 solid 1px;
     border-radius: 7px;
-    cursor: pointer;
 }
 
 .auth-form {

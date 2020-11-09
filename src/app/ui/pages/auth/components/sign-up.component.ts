@@ -15,9 +15,11 @@ import { CaptchaResponse } from '../captcha-response';
             [captchaImage]="captchaImage"
             [user]="user"
             [processing]="processing"
-            [errors]="errors"
+            [authError]="authError"
+            [captchaError]="captchaError"
             (updateCaptcha)="updateCaptcha()"
-            (dismissErrors)="errors = null"
+            (dismissAuthError)="authError = null;"
+            (dismissCaptchaError)="captchaError = null"
             (submit)="submit()">
         </app-auth-content>`,
 })
@@ -37,7 +39,8 @@ export class SignUpComponent implements OnInit {
 
     user = new SignUpUser();
     processing: boolean = false;
-    errors: string = null;
+    authError: string = null;
+    captchaError: string = null;
     captchaImage: any;
 
     updateCaptcha() {
@@ -56,24 +59,25 @@ export class SignUpComponent implements OnInit {
 
     private handleCaptchaResponse(captcha: CaptchaResponse) {
 
-        this.errors = captcha.errors;
+        this.captchaError = captcha.errors;
         this.user.captchaId = captcha.captchaId;
 
         // todo: convert captcha.captchaImage to image
         this.captchaImage = captcha.captchaImage;
 
-        if (this.errors) {
+        if (this.captchaError) {
             window.scrollTo(0, 0);
         }
     }
 
     private handleAuthResponse(response: AuthResponse) {
 
-        this.errors = response.errors;
+        this.authError = response.errors;
         this.processing = false;
 
-        if (this.errors) {
+        if (this.authError) {
             window.scrollTo(0, 0);
+            this.updateCaptcha();
             return;
         }
 

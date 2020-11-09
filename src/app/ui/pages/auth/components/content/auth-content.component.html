@@ -6,14 +6,25 @@
         <hr>
     </div>
 
-    <div *ngIf="errors"
+    <div *ngIf="authError"
         class="errors">
         <div>Ошибка!</div>
-        <div class="errors-text">{{ errors }}</div>
+        <div class="errors-text">{{ authError }}</div>
 
         <button class="errors-button"
             type="button"
-            (click)="dismissErrors.emit()">Ок
+            (click)="dismissAuthError.emit()">Ок
+        </button>
+    </div>
+
+    <div *ngIf="signUp && captchaError"
+        class="errors">
+        <div>Ошибка!</div>
+        <div class="errors-text">{{ captchaError }}</div>
+
+        <button class="errors-button"
+            type="button"
+            (click)="dismissCaptchaError.emit()">Ок
         </button>
     </div>
 

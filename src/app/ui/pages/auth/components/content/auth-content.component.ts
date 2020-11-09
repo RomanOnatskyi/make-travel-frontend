@@ -14,10 +14,12 @@ export class AuthContentComponent {
     @Input() captchaImage: any;
     @Input() user: SignInUser | SignUpUser;
     @Input() processing: boolean;
-    @Input() errors: string;
+    @Input() authError: string;
+    @Input() captchaError: string;
 
     @Output() updateCaptcha = new EventEmitter<void>();
-    @Output() dismissErrors = new EventEmitter<void>();
+    @Output() dismissAuthError = new EventEmitter<void>();
+    @Output() dismissCaptchaError = new EventEmitter<void>();
     @Output() submit = new EventEmitter<void>();
 
     get signUp() { return this.action == "sign-up"; }

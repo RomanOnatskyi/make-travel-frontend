@@ -25,7 +25,7 @@ export class AuthService {
 
         const params = new HttpParams().set('values', JSON.stringify(user));
         return this.http.get<AuthResponse>(`${this.appState.baseUrl}/users/register`, { params }).pipe(
-            catchError(HandleError<AuthResponse>('signIn')),
+            catchError(HandleError<AuthResponse>('Signing up')),
         );
     }
 
@@ -36,7 +36,7 @@ export class AuthService {
 
         const params = new HttpParams().set('values', JSON.stringify(user));
         return this.http.get<AuthResponse>(`${this.appState.baseUrl}/users/login`, { params }).pipe(
-            catchError(HandleError<AuthResponse>('signIn')),
+            catchError(HandleError<AuthResponse>('Signing in')),
         );
     }
 }

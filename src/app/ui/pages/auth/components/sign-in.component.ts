@@ -12,8 +12,8 @@ import { SignInUser } from '../users';
             action="sign-in"
             [user]="user"
             [processing]="processing"
-            [errors]="errors"
-            (dismissErrors)="errors = null"
+            [authError]="authError"
+            (dismissAuthError)="authError = null"
             (submit)="submit()">
         </app-auth-content>`,
 })
@@ -27,7 +27,7 @@ export class SignInComponent {
 
     user = new SignInUser();
     processing: boolean = false;
-    errors: string = null;
+    authError: string = null;
 
     submit() {
 
@@ -40,9 +40,9 @@ export class SignInComponent {
     private handleResponse(response: AuthResponse) {
 
         this.processing = false;
-        this.errors = response.errors;
+        this.authError = response.errors;
 
-        if (this.errors) {
+        if (this.authError) {
             window.scrollTo(0, 0);
             return;
         }
