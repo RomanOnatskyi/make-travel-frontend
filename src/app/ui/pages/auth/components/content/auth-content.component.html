@@ -6,7 +6,8 @@
         <hr>
     </div>
 
-    <div *ngIf="errors" class="errors">
+    <div *ngIf="errors"
+        class="errors">
         <div>Ошибка!</div>
         <div class="errors-text">{{ errors }}</div>
 
@@ -36,7 +37,8 @@
             </div>
         </div>
 
-        <div *ngIf="signUp" class="auth-form-item">
+        <div *ngIf="signUp"
+            class="auth-form-item">
             <label for="name">ФИО</label>
             <input type="text"
                 #name="ngModel"
@@ -53,7 +55,8 @@
             </div>
         </div>
 
-        <div *ngIf="signUp" class="auth-form-item">
+        <div *ngIf="signUp"
+            class="auth-form-item">
             <label for="email">Электронная почта</label>
             <input type="email"
                 #email="ngModel"
@@ -70,7 +73,8 @@
             </div>
         </div>
 
-        <div *ngIf="signUp" class="auth-form-item">
+        <div *ngIf="signUp"
+            class="auth-form-item">
             <label for="passport">Номер загранпаспорта</label>
             <input type="text"
                 #passport="ngModel"
@@ -104,7 +108,8 @@
             </div>
         </div>
 
-        <div *ngIf="signUp" class="auth-form-item">
+        <div *ngIf="signUp"
+            class="auth-form-item">
             <label for="password-check">Подтвердите пароль</label>
             <input type="password"
                 #passwordCheck="ngModel"
@@ -121,7 +126,8 @@
             </div>
         </div>
 
-        <div *ngIf="signUp" class="auth-form-captcha-item">
+        <div *ngIf="signUp"
+            class="auth-form-captcha-item">
             <label for="captcha">Введите символы на картинке</label>
 
             <div class="captcha">
@@ -133,13 +139,11 @@
                 id="captcha"
                 name="captcha"
                 required
-                ngModel
-                [pattern]="captchaPattern">
+                [(ngModel)]="user.captchaValue">
 
             <div *ngIf="captcha.invalid && (captcha.dirty || captcha.touched)"
                 class="validation-warning">
                 <div *ngIf="captcha.errors.required">Заполните это поле!</div>
-                <div *ngIf="captcha.errors.pattern">Введенные символы не совпадают с картинкой</div>
             </div>
         </div>
 

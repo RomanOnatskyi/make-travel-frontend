@@ -11,6 +11,7 @@ export type AuthAction = "sign-up" | "sign-in";
 export class AuthContentComponent implements OnInit {
 
     @Input() action: AuthAction;
+    @Input() captchaImage: AuthAction;
     @Input() user: SignInUser | SignUpUser;
     @Input() processing: boolean;
     @Input() errors: string;
@@ -21,11 +22,6 @@ export class AuthContentComponent implements OnInit {
     get signUp() { return this.action == "sign-up"; }
     get signIn() { return this.action == "sign-in"; }
 
-    // todo: remove captchaPattern
-    captchaPattern: string;
-
     ngOnInit(): void {
-
-        this.captchaPattern = "3cyunR";
     }
 }
