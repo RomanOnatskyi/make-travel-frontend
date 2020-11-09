@@ -16,6 +16,7 @@ import { CaptchaResponse } from '../captcha-response';
             [user]="user"
             [processing]="processing"
             [errors]="errors"
+            (updateCaptcha)="updateCaptcha()"
             (dismissErrors)="errors = null"
             (submit)="submit()">
         </app-auth-content>`,

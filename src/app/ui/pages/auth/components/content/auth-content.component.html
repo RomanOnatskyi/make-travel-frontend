@@ -135,6 +135,10 @@
                 <img src="assets/img/captcha.png" alt="Загрузка капчи..">
             </div>
 
+            <div class="update-captcha-button">
+                <button (click)="updateCaptcha.emit()" type="button">Другая картинка</button>
+            </div>
+
             <input type="text"
                 #captcha="ngModel"
                 id="captcha"
