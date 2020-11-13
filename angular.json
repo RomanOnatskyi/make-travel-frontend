@@ -119,6 +119,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "MakeTravel"
+    }
+  },
+  "defaultProject": "MakeTravel",
+  "cli": {
+    "analytics": false
+  }
 }
