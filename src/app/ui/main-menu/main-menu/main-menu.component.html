@@ -1,0 +1,34 @@
+<div class="m-menu">
+    <div class="main-menu">
+        <button class="main-menu-button">
+            <a routerLink="">Главная</a>
+        </button>
+
+        <button class="main-menu-button">
+            <a routerLink="">Услуги</a>
+        </button>
+
+        <button class="main-menu-button">
+            <a routerLink="">Мои отели</a>
+        </button>
+
+        <button class="main-menu-button">
+            <a routerLink="">Отзывы</a>
+        </button>
+
+        <button class="main-menu-button">
+            <a routerLink="">How to</a>
+        </button>
+    </div>
+
+    <div *ngIf="currentUser == UserRole.Unauthorized"
+         class="profile-section">
+        <a class="authorization-items" routerLink="/auth/sign-up">Регистрация</a>
+        <a class="authorization-items" routerLink="/auth/sign-in">Вход</a>
+    </div>
+
+    <div *ngIf="currentUser != UserRole.Unauthorized"
+         class="profile-section">
+        <a class="authorization-items" routerLink="/profile">Профиль</a>
+    </div>
+</div>

@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { AppStateService, UserRole } from '../../../app-state.service';
 
 @Component({
     selector: 'app-header',
@@ -9,10 +8,5 @@ import { AppStateService, UserRole } from '../../../app-state.service';
 export class HeaderComponent {
 
     constructor(
-        private appStateService: AppStateService,
     ) {}
-
-    get currentUser() { return this.appStateService.appState.currentUser; }
-
-    UserRole = UserRole;
 }
