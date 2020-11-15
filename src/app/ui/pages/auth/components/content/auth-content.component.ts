@@ -8,10 +8,9 @@ export type AuthAction = "sign-up" | "sign-in";
     templateUrl: './auth-content.component.html',
     styleUrls: ['./auth-content.component.css'],
 })
-export class AuthContentComponent {
+export class AuthContentComponent implements OnInit{
 
     @Input() action: AuthAction;
-    @Input() captchaImage: any;
     @Input() user: SignInUser | SignUpUser;
     @Input() processing: boolean;
     @Input() authError: string;
@@ -24,4 +23,10 @@ export class AuthContentComponent {
 
     get signUp() { return this.action == "sign-up"; }
     get signIn() { return this.action == "sign-in"; }
+
+    ngOnInit() {
+        this.captchaImageURL = `http://localhost:8080/project/getCaptcha?${this.user.login}`;
+    }
+
+    captchaImageURL: string;
 }

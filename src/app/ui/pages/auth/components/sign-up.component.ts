@@ -11,7 +11,6 @@ import { CaptchaResponse } from '../captcha-response';
     template: `
         <app-auth-content
             action="sign-up"
-            [captchaImage]="captchaImage"
             [user]="user"
             [processing]="processing"
             [authError]="authError"
@@ -39,12 +38,11 @@ export class SignUpComponent implements OnInit {
     processing: boolean = false;
     authError: string = null;
     captchaError: string = null;
-    captchaImage: any;
 
     updateCaptcha() {
 
-        this.authService.getCaptcha()
-            .subscribe(captcha => this.handleCaptchaResponse(captcha));
+        this.authService.getCaptchaId()
+            .subscribe(captcha => this.handleCaptchaIdResponse(captcha));
     }
 
     submit() {
@@ -55,13 +53,10 @@ export class SignUpComponent implements OnInit {
             .subscribe(response => this.handleAuthResponse(response));
     }
 
-    private handleCaptchaResponse(captcha: CaptchaResponse) {
+    private handleCaptchaIdResponse(captcha: CaptchaResponse) {
 
         this.captchaError = captcha.errors;
         this.user.captchaId = captcha.captchaId;
-
-        // todo: convert captcha.captchaImage to image
-        this.captchaImage = captcha.captchaImage;
 
         if (this.captchaError) {
             window.scrollTo(0, 0);

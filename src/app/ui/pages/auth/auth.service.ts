@@ -41,9 +41,9 @@ export class AuthService {
         );
     }
 
-    getCaptcha() {
+    getCaptchaId() {
 
-        return this.http.get<CaptchaResponse>(`${this.appState.baseUrl}/captcha`).pipe(
+        return this.http.get<CaptchaResponse>(`${this.appState.baseUrl}/captcha/id`).pipe(
             catchError(HandleError<CaptchaResponse>('Getting captcha')),
         );
     }
