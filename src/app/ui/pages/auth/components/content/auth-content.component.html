@@ -146,7 +146,12 @@
             </div>
 
             <div class="update-captcha-button">
-                <button (click)="updateCaptcha.emit()" type="button">Другая картинка</button>
+                <button (click)="updateCaptcha.emit()"
+                    [disabled]="processing"
+                    type="button">
+
+                    Другая картинка
+                </button>
             </div>
 
             <input type="text"

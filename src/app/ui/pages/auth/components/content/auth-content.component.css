@@ -83,7 +83,7 @@ input {
     min-width: 70px;
 }
 
-.auth-form-submit-item button:disabled, .form-submitting {
+.auth-form-submit-item button:disabled, .update-captcha-button button:disabled, .form-submitting {
     color: #7C7979;
     border: #7C7979 solid 1px;
     cursor: default;
@@ -120,6 +120,7 @@ input {
     background: none;
     border: #FBECD8 solid 1px;
     border-radius: 7px;
+    cursor: pointer;
 }
 
 .validation-warning {

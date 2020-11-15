@@ -41,6 +41,9 @@ export class SignUpComponent implements OnInit {
 
     updateCaptcha() {
 
+        this.processing = true;
+        this.user.captchaValue = null;
+
         this.authService.getCaptchaId()
             .subscribe(captcha => this.handleCaptchaIdResponse(captcha));
     }
@@ -56,6 +59,8 @@ export class SignUpComponent implements OnInit {
     private handleCaptchaIdResponse(captcha: CaptchaResponse) {
 
         this.captchaError = captcha.errors;
+        this.processing = false;
+
         this.user.captchaId = captcha.captchaId;
 
         if (this.captchaError) {
