@@ -51,7 +51,6 @@
     color: #FFFFFF;
 }
 
-
 .pro-file{
     padding-right: 100px;
     padding-left: 50px;
@@ -65,7 +64,13 @@
     background: none;
     font-size: 12pt;
     min-width: 100px;
-    padding-right: 25px;
+    padding-right: 20px;
+}
+
+a {
+    color: #FFFFFF;
+    text-decoration: none;
+    font-weight: bold;
 }
 
 .authorization-menu-button:hover{
@@ -73,8 +78,6 @@
     height: 50px;
 }
 
-a {
-    color: #FFFFFF;
-    text-decoration: none;
-    font-weight: bold;
+.authorization-menu-button:hover a{
+    color: #FFE5B4;
 }

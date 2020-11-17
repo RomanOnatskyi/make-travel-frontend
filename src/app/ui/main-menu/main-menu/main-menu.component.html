@@ -21,14 +21,16 @@
         </button>
     </div>
 
+
     <div *ngIf="currentUser == UserRole.Unauthorized"
          class="profile-section">
-        <a class="authorization-items" routerLink="/auth/sign-up">Регистрация</a>
-        <a class="authorization-items" routerLink="/auth/sign-in">Вход</a>
+        <button class="authorization-menu-button"><a class="authorization-items" routerLink="/auth/sign-up">Регистрация</a></button>
+        <button class="authorization-menu-button"><a class="authorization-items" routerLink="/auth/sign-in">Вход</a></button>
     </div>
 
     <div *ngIf="currentUser != UserRole.Unauthorized"
          class="profile-section">
-        <a class="authorization-items" routerLink="/profile">Профиль</a>
+        <button class="authorization-menu-button"><a class="authorization-items" routerLink="/profile">Профиль</a></button>
     </div>
+
 </div>
