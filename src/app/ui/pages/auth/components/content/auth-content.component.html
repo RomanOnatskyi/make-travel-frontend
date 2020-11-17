@@ -26,13 +26,13 @@
                 id="login"
                 name="login"
                 required
-                pattern=".{3,20}"
+                pattern="^([A-Za-z]{3})([A-Za-z0-9]){0,17}"
                 [(ngModel)]="user.login">
 
             <div *ngIf="login.invalid && (login.dirty || login.touched)"
                 class="validation-warning">
                 <div *ngIf="login.errors.required">Заполните это поле!</div>
-                <div *ngIf="login.errors.pattern">Допускается от 3-х до 20-ти символов</div>
+                <div *ngIf="login.errors.pattern">Первых 3 символа буквы. Максимум 20 символов. Только буквы и цифры.</div>
             </div>
         </div>
 
@@ -43,13 +43,13 @@
                 id="name"
                 name="name"
                 required
-                pattern="[a-zA-Zа-яА-Яёіїє -]{3,50}"
+                pattern="[a-zA-Zа-яА-Яёіїє -]{2,30}"
                 [(ngModel)]="user.name">
 
             <div *ngIf="name.invalid && (name.dirty || name.touched)"
                 class="validation-warning">
                 <div *ngIf="name.errors.required">Заполните это поле!</div>
-                <div *ngIf="name.errors.pattern">Допускается от 3-х до 50-ти букв, пробелы и дефис</div>
+                <div *ngIf="name.errors.pattern">Допускается от 2-х до 30-ти букв, пробелы и дефис</div>
             </div>
         </div>
 
@@ -60,7 +60,7 @@
                 id="email"
                 name="email"
                 required
-                pattern="[\w\.]+\@\w+\.+\w+"
+                pattern="(\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,6})"
                 [(ngModel)]="user.email">
 
             <div *ngIf="email.invalid && (email.dirty || email.touched)"
@@ -77,13 +77,13 @@
                 id="passport"
                 name="passport"
                 required
-                pattern="[A-Z]*[\d]*"
+                pattern="[A-Za-z0-9]{2}\s{1}[0-9]{6,10}"
                 [(ngModel)]="user.passport">
 
             <div *ngIf="passport.invalid && (passport.dirty || passport.touched)"
                 class="validation-warning">
                 <div *ngIf="passport.errors.required">Заполните это поле!</div>
-                <div *ngIf="passport.errors.pattern">Вы должны ввести правильный номер загранпаспорта</div>
+                <div *ngIf="passport.errors.pattern">Формат: Серия(2 символа) 000000(максимум 10 цифр)</div>
             </div>
         </div>
 
