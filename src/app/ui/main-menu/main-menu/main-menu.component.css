@@ -24,6 +24,7 @@
     display: flex;
     flex: 1 1 60%;
     justify-content: center;
+    margin-left: 4em;
 }
 
 .main-menu-button {
@@ -31,10 +32,16 @@
     color: #FFFFFF;
     font-size: 12pt;
     min-width: 100px;
+    flex: 1;
 }
 
-a:hover {
-    color: #FBECD8;
+.main-menu-button:hover{
+    background: #FBECD8;
+    height: 50px;
+}
+
+.main-menu-button:hover a{
+    color: #832736;
 }
 
 .profile-section {
@@ -44,11 +51,30 @@ a:hover {
     color: #FFFFFF;
 }
 
+
+.pro-file{
+    padding-right: 100px;
+    padding-left: 50px;
+}
+
 .authorization-items {
     margin-left: 20px;
+}
+
+.authorization-menu-button{
+    background: none;
+    font-size: 12pt;
+    min-width: 100px;
+    padding-right: 25px;
+}
+
+.authorization-menu-button:hover{
+    background: #3C070E;
+    height: 50px;
 }
 
 a {
     color: #FFFFFF;
     text-decoration: none;
+    font-weight: bold;
 }
