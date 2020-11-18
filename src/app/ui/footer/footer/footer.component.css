@@ -8,7 +8,7 @@ footer {
     display: flex;
     align-items: center;
     background-color: #832736;
-    height: 200px;
+    height: 150px;
 }
 
 .footer-content {
@@ -18,6 +18,12 @@ footer {
     height: 100px;
     font-size: 10pt;
     margin-left: 100px;
+}
+
+.gmail{
+    border: 1px solid white; /* Параметры границы */
+    padding: 10px; /* Поля вокруг текста */
+    border-radius: 5px;
 }
 
 .section-header {
@@ -37,10 +43,13 @@ footer {
     font-size: 9pt;
 }
 
+.ot{
+    margin-left: 5em;
+}
+
 .footer-logo {
     align-items: flex-end;
-    width: 100%;
-    margin-right: 100px;
     font-size: 16pt;
     font-family: Papyrus, Arial, sans-serif;
+    margin-left: 50%;
 }

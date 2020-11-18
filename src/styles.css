@@ -21,7 +21,7 @@ app-main, app-sign-up, app-sign-in {
     align-items: center;
 }
 
-app-header {
+app-main-menu {
     position: sticky;
     top: 0;
 }
