@@ -2,10 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AppStateService } from '../../../../app-state.service';
 import { AuthService } from '../auth.service';
-import { AuthResponse } from '../auth-response';
+import { AuthResponse } from '../../../../responses/auth-response';
 import { SignUpUser } from '../users';
 import { CaptchaService } from '../captcha.service';
-import { CaptchaResponse } from '../captcha-response';
+import { CaptchaResponse } from '../../../../responses/captcha-response';
 
 @Component({
     selector: 'app-sign-up',

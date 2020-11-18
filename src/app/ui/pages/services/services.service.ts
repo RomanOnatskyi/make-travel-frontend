@@ -1,9 +1,11 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { catchError } from 'rxjs/operators';
 import { AppStateService } from '../../../app-state.service';
+import { catchError } from 'rxjs/operators';
 import { HandleError } from '../../../handle-error';
-import { HotelServiceResponse, ServiceResponse, UserHotelResponse } from './responses';
+import { UserHotelResponse } from '../../../responses/user-hotel-response';
+import { HotelServiceResponse } from '../../../responses/hotel-service-response';
+import { ServiceResponse } from '../../../responses/service-response';
 
 @Injectable({
     providedIn: 'root',

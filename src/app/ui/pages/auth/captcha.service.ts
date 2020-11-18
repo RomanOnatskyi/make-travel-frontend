@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { catchError } from 'rxjs/operators';
 import { AppStateService } from '../../../app-state.service';
-import { CaptchaResponse } from './captcha-response';
+import { CaptchaResponse } from '../../../responses/captcha-response';
 import { HandleError } from '../../../handle-error';
 
 @Injectable({

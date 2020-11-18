@@ -1,4 +1,4 @@
-import { BaseResponse } from './base-response';
+import { BaseResponse } from './responses/base-response';
 import { Observable, of } from 'rxjs';
 
 export function HandleError<T extends BaseResponse>(operation = 'Operation') {
