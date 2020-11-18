@@ -3,12 +3,11 @@
         <div class="hotels-section-header">Ваш отель</div>
 
         <div class="hotels-list">
-            <button class="hotels-list-button">Hotel 1 text texttext text text text texttext text texttext texttext text text text text text </button>
-            <button class="hotels-list-button">Hotel 2</button>
-            <button class="hotels-list-button">Hotel 3 text texttext text text text texttext text texttext texttext text text text text text </button>
-            <button class="hotels-list-button">Hotel 4</button>
-            <button class="hotels-list-button">Hotel 5</button>
-            <button class="hotels-list-button">Hotel 6</button>
+            <button *ngFor="let hotel of userHotels"
+                class="hotels-list-button">
+
+                {{hotel.name}}
+            </button>
         </div>
     </div>
 
@@ -21,25 +20,13 @@
         </div>
 
         <div class="services-list">
-            <div class="services-list-item base-container">
-                <div class="service-content">
-                    <div>Service 1</div>
-                    <div>text</div>
-                    <div>text</div>
-                    <div>text</div>
-                    <div>text</div>
-                </div>
-            </div>
+            <div *ngFor="let service of hotelServices"
+                class="services-list-item base-container">
 
-            <div class="services-list-item base-container">
                 <div class="service-content">
-                    <div>Service 2</div>
-                </div>
-            </div>
-
-            <div class="services-list-item base-container">
-                <div class="service-content">
-                    <div>Service 3</div>
+                    <div>{{service.name}}</div>
+                    <div>{{service.description}}</div>
+                    <div>{{service.price}}</div>
                 </div>
             </div>
         </div>
