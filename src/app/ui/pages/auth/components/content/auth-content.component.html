@@ -6,13 +6,25 @@
         <hr>
     </div>
 
-    <div *ngIf="errors" class="errors">
+    <div *ngIf="authError"
+        class="errors">
         <div>Ошибка!</div>
-        <div class="errors-text">{{ errors }}</div>
+        <div class="errors-text">{{ authError }}</div>
 
         <button class="errors-button"
             type="button"
-            (click)="dismissErrors.emit()">Ок
+            (click)="dismissAuthError.emit()">Ок
+        </button>
+    </div>
+
+    <div *ngIf="signUp && captchaError"
+        class="errors">
+        <div>Ошибка!</div>
+        <div class="errors-text">{{ captchaError }}</div>
+
+        <button class="errors-button"
+            type="button"
+            (click)="dismissCaptchaError.emit()">Ок
         </button>
     </div>
 
@@ -36,7 +48,8 @@
             </div>
         </div>
 
-        <div *ngIf="signUp" class="auth-form-item">
+        <div *ngIf="signUp"
+            class="auth-form-item">
             <label for="name">ФИО</label>
             <input type="text"
                 #name="ngModel"
@@ -53,7 +66,8 @@
             </div>
         </div>
 
-        <div *ngIf="signUp" class="auth-form-item">
+        <div *ngIf="signUp"
+            class="auth-form-item">
             <label for="email">Электронная почта</label>
             <input type="email"
                 #email="ngModel"
@@ -70,7 +84,8 @@
             </div>
         </div>
 
-        <div *ngIf="signUp" class="auth-form-item">
+        <div *ngIf="signUp"
+            class="auth-form-item">
             <label for="passport">Номер загранпаспорта</label>
             <input type="text"
                 #passport="ngModel"
@@ -104,7 +119,8 @@
             </div>
         </div>
 
-        <div *ngIf="signUp" class="auth-form-item">
+        <div *ngIf="signUp"
+            class="auth-form-item">
             <label for="password-check">Подтвердите пароль</label>
             <input type="password"
                 #passwordCheck="ngModel"
@@ -121,11 +137,21 @@
             </div>
         </div>
 
-        <div *ngIf="signUp" class="auth-form-captcha-item">
+        <div *ngIf="signUp"
+            class="auth-form-captcha-item">
             <label for="captcha">Введите символы на картинке</label>
 
             <div class="captcha">
-                <img src="assets/img/captcha.png" alt="">
+                <img [src]="captchaImageURL" alt="Загрузка капчи..">
+            </div>
+
+            <div class="update-captcha-button">
+                <button (click)="updateCaptcha.emit()"
+                    [disabled]="processing"
+                    type="button">
+
+                    Другая картинка
+                </button>
             </div>
 
             <input type="text"
@@ -133,13 +159,11 @@
                 id="captcha"
                 name="captcha"
                 required
-                ngModel
-                [pattern]="captchaPattern">
+                [(ngModel)]="user.captchaValue">
 
             <div *ngIf="captcha.invalid && (captcha.dirty || captcha.touched)"
                 class="validation-warning">
                 <div *ngIf="captcha.errors.required">Заполните это поле!</div>
-                <div *ngIf="captcha.errors.pattern">Введенные символы не совпадают с картинкой</div>
             </div>
         </div>
 

@@ -1,11 +1,11 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
-import { Observable, of } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { SignInUser, SignUpUser } from './users';
 import { AppStateService } from '../../../app-state.service';
 import { AuthResponse } from './auth-response';
-import { BaseResponse } from '../../../base-response';
+import { HandleError } from '../../../handle-error';
+import { CaptchaResponse } from './captcha-response';
 
 @Injectable({
     providedIn: 'root',
@@ -26,7 +26,7 @@ export class AuthService {
 
         const params = new HttpParams().set('values', JSON.stringify(user));
         return this.http.get<AuthResponse>(`${this.appState.baseUrl}/users/register`, { params }).pipe(
-            catchError(this.handleError<AuthResponse>('signIn')),
+            catchError(HandleError<AuthResponse>('Signing up')),
         );
     }
 
@@ -37,18 +37,14 @@ export class AuthService {
 
         const params = new HttpParams().set('values', JSON.stringify(user));
         return this.http.get<AuthResponse>(`${this.appState.baseUrl}/users/login`, { params }).pipe(
-            catchError(this.handleError<AuthResponse>('signIn')),
+            catchError(HandleError<AuthResponse>('Signing in')),
         );
     }
 
-    private handleError<T extends BaseResponse>(operation = 'operation') {
+    getCaptchaId() {
 
-        return (error: any): Observable<T> => {
-
-            const result = {} as T;
-            result.errors = `${operation} failed: ${error.message}`;
-
-            return of(result);
-        };
+        return this.http.get<CaptchaResponse>(`${this.appState.baseUrl}/captcha/id`).pipe(
+            catchError(HandleError<CaptchaResponse>('Getting captcha')),
+        );
     }
 }

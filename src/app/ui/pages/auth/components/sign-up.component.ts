@@ -1,9 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AppStateService } from '../../../../app-state.service';
 import { AuthService } from '../auth.service';
 import { AuthResponse } from '../auth-response';
 import { SignUpUser } from '../users';
+import { CaptchaResponse } from '../captcha-response';
 
 @Component({
     selector: 'app-sign-up',
@@ -12,12 +13,15 @@ import { SignUpUser } from '../users';
             action="sign-up"
             [user]="user"
             [processing]="processing"
-            [errors]="errors"
-            (dismissErrors)="errors = null"
+            [authError]="authError"
+            [captchaError]="captchaError"
+            (updateCaptcha)="updateCaptcha()"
+            (dismissAuthError)="authError = null;"
+            (dismissCaptchaError)="captchaError = null"
             (submit)="submit()">
         </app-auth-content>`,
 })
-export class SignUpComponent {
+export class SignUpComponent implements OnInit {
 
     constructor(
         private router: Router,
@@ -25,25 +29,53 @@ export class SignUpComponent {
         private authService: AuthService,
     ) {}
 
+    ngOnInit() {
+
+        this.updateCaptcha();
+    }
+
     user = new SignUpUser();
     processing: boolean = false;
-    errors: string = null;
+    authError: string = null;
+    captchaError: string = null;
+
+    updateCaptcha() {
+
+        this.processing = true;
+        this.user.captchaValue = null;
+
+        this.authService.getCaptchaId()
+            .subscribe(captcha => this.handleCaptchaIdResponse(captcha));
+    }
 
     submit() {
 
         this.processing = true;
 
         this.authService.signUp(this.user)
-            .subscribe(response => this.handleResponse(response));
+            .subscribe(response => this.handleAuthResponse(response));
     }
 
-    private handleResponse(response: AuthResponse) {
+    private handleCaptchaIdResponse(captcha: CaptchaResponse) {
 
+        this.captchaError = captcha.errors;
         this.processing = false;
-        this.errors = response.errors;
 
-        if (this.errors) {
+        this.user.captchaId = captcha.captchaId;
+
+        if (this.captchaError) {
             window.scrollTo(0, 0);
+        }
+    }
+
+    private handleAuthResponse(response: AuthResponse) {
+
+        this.authError = response.errors;
+        this.processing = false;
+
+        if (this.authError) {
+            window.scrollTo(0, 0);
+            this.updateCaptcha();
             return;
         }
 

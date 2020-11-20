@@ -1,5 +1,6 @@
 import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
 import { SignInUser, SignUpUser } from '../../users';
+import { AppStateService } from '../../../../../app-state.service';
 
 export type AuthAction = "sign-up" | "sign-in";
 
@@ -8,24 +9,31 @@ export type AuthAction = "sign-up" | "sign-in";
     templateUrl: './auth-content.component.html',
     styleUrls: ['./auth-content.component.css'],
 })
-export class AuthContentComponent implements OnInit {
+export class AuthContentComponent implements OnInit{
 
     @Input() action: AuthAction;
     @Input() user: SignInUser | SignUpUser;
     @Input() processing: boolean;
-    @Input() errors: string;
+    @Input() authError: string;
+    @Input() captchaError: string;
 
-    @Output() dismissErrors = new EventEmitter<void>();
+    @Output() updateCaptcha = new EventEmitter<void>();
+    @Output() dismissAuthError = new EventEmitter<void>();
+    @Output() dismissCaptchaError = new EventEmitter<void>();
     @Output() submit = new EventEmitter<void>();
 
     get signUp() { return this.action == "sign-up"; }
     get signIn() { return this.action == "sign-in"; }
 
-    // todo: remove captchaPattern
-    captchaPattern: string;
+    constructor(
+        private appStateService: AppStateService,
+    ) {}
 
-    ngOnInit(): void {
-
-        this.captchaPattern = "3cyunR";
+    ngOnInit() {
+        if (this.user instanceof SignUpUser) {
+            this.captchaImageURL = `${this.appStateService.appState.baseUrl}/getCaptcha?${this.user.captchaId}`;
+        }
     }
+
+    captchaImageURL: string;
 }

@@ -34,7 +34,7 @@ input {
     flex-direction: column;
     align-items: center;
     color: #FF0000;
-    margin: 0 70px;
+    margin: 0 70px 10px 70px;
     padding: 10px;
     border: #FBECD8 solid 1px;
     border-radius: 6px;
@@ -54,7 +54,6 @@ input {
     background: none;
     border: #FBECD8 solid 1px;
     border-radius: 7px;
-    cursor: pointer;
 }
 
 .auth-form {
@@ -84,7 +83,7 @@ input {
     min-width: 70px;
 }
 
-.auth-form-submit-item button:disabled, .form-submitting {
+.auth-form-submit-item button:disabled, .update-captcha-button button:disabled, .form-submitting {
     color: #7C7979;
     border: #7C7979 solid 1px;
     cursor: default;
@@ -106,6 +105,22 @@ input {
     border: #FBECD8 2px solid;
     width: 60%;
     margin: 10px 0;
+}
+
+.update-captcha-button {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 10px;
+}
+
+.update-captcha-button button {
+    height: 20px;
+    width: 120px;
+    color: #FBECD8;
+    background: none;
+    border: #FBECD8 solid 1px;
+    border-radius: 7px;
+    cursor: pointer;
 }
 
 .validation-warning {
