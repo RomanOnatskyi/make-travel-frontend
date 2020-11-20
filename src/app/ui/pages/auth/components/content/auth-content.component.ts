@@ -1,5 +1,6 @@
 import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
 import { SignInUser, SignUpUser } from '../../users';
+import { AppStateService } from '../../../../../app-state.service';
 
 export type AuthAction = "sign-up" | "sign-in";
 
@@ -24,8 +25,14 @@ export class AuthContentComponent implements OnInit{
     get signUp() { return this.action == "sign-up"; }
     get signIn() { return this.action == "sign-in"; }
 
+    constructor(
+        private appStateService: AppStateService,
+    ) {}
+
     ngOnInit() {
-        this.captchaImageURL = `http://localhost:8080/project/getCaptcha?${this.user.login}`;
+        if (this.user instanceof SignUpUser) {
+            this.captchaImageURL = `${this.appStateService.appState.baseUrl}/getCaptcha?${this.user.captchaId}`;
+        }
     }
 
     captchaImageURL: string;
