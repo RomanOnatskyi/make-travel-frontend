@@ -17,28 +17,64 @@ export class ServicesComponent implements OnInit {
 
     async ngOnInit() {
 
-        const userHotelsResponse = await this.servicesService.getUserHotels().toPromise();
-
-        this.userHotels = userHotelsResponse.hotelList;
-        this.errors = userHotelsResponse.errors;
-
-        if (this.errors) {
-            alert(this.errors);
-            this.errors = null;
-        }
-
-        const hotelServicesResponse = await this.servicesService.getServicesByHotelIdAndCategory(this.userHotels[0].id, ServiceCategory.Cleaning).toPromise();
-
-        this.hotelServices = hotelServicesResponse.serviceList;
-        this.errors = hotelServicesResponse.errors;
-
-        if (this.errors) {
-            alert(this.errors);
-            this.errors = null;
-        }
+        this.userHotels = await this.updateUserHotels();
+        this.hotelServices = await this.updateServices(this.userHotels[0].id, ServiceCategory.Cleaning);
     }
+
+    categories = [
+        { name: "Уборка", type: ServiceCategory.Cleaning },
+        { name: "Еда", type: ServiceCategory.Food },
+        { name: "Развлечения", type: ServiceCategory.Entertainment },
+        { name: "Ремонт", type: ServiceCategory.Repairing },
+    ];
 
     userHotels: UserHotel[];
     hotelServices: HotelService[];
-    errors: string;
+
+    currentHotelId: number;
+    currentCategory: ServiceCategory;
+
+    async hotelSelected(hotelId: number) {
+
+        this.hotelServices = await this.updateServices(hotelId, this.currentCategory);
+    }
+
+    async categorySelected(categoryId: ServiceCategory) {
+
+        this.hotelServices = await this.updateServices(this.currentHotelId, categoryId);
+    }
+
+    private async updateUserHotels() {
+
+        const userHotelsResponse = await this.servicesService.getUserHotels().toPromise();
+
+        const error = userHotelsResponse.errors;
+
+        if (error) {
+            this.showError(error);
+        }
+
+        return userHotelsResponse.hotelList;
+    }
+
+    private async updateServices(hotelId: number, categoryId: ServiceCategory) {
+
+        this.currentHotelId = hotelId;
+        this.currentCategory = categoryId;
+
+        const hotelServicesResponse = await this.servicesService.getServicesByHotelIdAndCategory(hotelId, categoryId).toPromise();
+
+        const error = hotelServicesResponse.errors;
+
+        if (error) {
+            this.showError(error);
+        }
+
+        return hotelServicesResponse.serviceList;
+    }
+
+    private showError(errors: string) {
+
+        alert(errors);
+    }
 }

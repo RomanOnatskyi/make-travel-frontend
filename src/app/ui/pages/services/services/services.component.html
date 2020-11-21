@@ -4,25 +4,27 @@
 
         <div class="hotels-list">
             <button *ngFor="let hotel of userHotels"
-                class="hotels-list-button">
+                class="hotels-list-button"
+                (click)="hotelSelected(hotel.id)">
 
-                {{hotel.name}}
+                {{ hotel.name }}
             </button>
         </div>
     </div>
 
     <div class="services-section">
         <div class="categories base-container">
-            <button class="category-button">Уборка</button>
-            <button class="category-button">Еда</button>
-            <button class="category-button">Развлечения</button>
-            <button class="category-button">Ремонт</button>
+            <button *ngFor="let category of categories"
+                class="category-button"
+                (click)="categorySelected(category.type)">
+
+                {{ category.name }}
+            </button>
         </div>
 
         <div class="services-list">
             <div *ngFor="let service of hotelServices"
                 class="services-list-item base-container">
-
                 <div class="service-content">
                     <div>{{service.name}}</div>
                     <div>{{service.description}}</div>
