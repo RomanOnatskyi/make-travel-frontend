@@ -5,7 +5,6 @@ import { catchError } from 'rxjs/operators';
 import { HandleError } from '../../../handle-error';
 import { UserHotelResponse } from '../../../responses/user-hotel-response';
 import { HotelServiceResponse } from '../../../responses/hotel-service-response';
-import { ServiceResponse } from '../../../responses/service-response';
 
 @Injectable({
     providedIn: 'root',
@@ -28,19 +27,11 @@ export class ServicesService {
         );
     }
 
-    getHotelServices(hotelId: number, categoryId: number) {
+    getServicesByHotelIdAndCategory(hotelId: number, categoryId: number) {
 
         // todo: add token to url
         return this.http.get<HotelServiceResponse>(`${this.appState.baseUrl}/hotels/services/${hotelId}/${categoryId}`).pipe(
             catchError(HandleError<HotelServiceResponse>('Getting services info')),
-        );
-    }
-
-    getService(serviceId: number) {
-
-        // todo: add token to url
-        return this.http.get<ServiceResponse>(`${this.appState.baseUrl}/hotels/services/${serviceId}`).pipe(
-            catchError(HandleError<ServiceResponse>('Getting service info')),
         );
     }
 }

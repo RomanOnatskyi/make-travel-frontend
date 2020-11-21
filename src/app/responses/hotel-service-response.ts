@@ -5,6 +5,7 @@ export class HotelService {
     name: string;
     description: string;
     price: number;
+    isOrdered: boolean;
 }
 
 export class HotelServiceResponse extends BaseResponse {

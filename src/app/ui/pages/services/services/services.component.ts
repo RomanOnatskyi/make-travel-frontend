@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { UserHotel, UserHotelResponse } from '../../../../responses/user-hotel-response';
+import { UserHotel } from '../../../../responses/user-hotel-response';
 import { ServicesService } from '../services.service';
-import { HotelService, HotelServiceResponse } from '../../../../responses/hotel-service-response';
+import { HotelService } from '../../../../responses/hotel-service-response';
+import { ServiceCategory } from '../../../../app-state.service';
 
 @Component({
     selector: 'app-services',
@@ -26,7 +27,7 @@ export class ServicesComponent implements OnInit {
             this.errors = null;
         }
 
-        const hotelServicesResponse = await this.servicesService.getHotelServices(this.userHotels[0].id, 1).toPromise();
+        const hotelServicesResponse = await this.servicesService.getServicesByHotelIdAndCategory(this.userHotels[0].id, ServiceCategory.Cleaning).toPromise();
 
         this.hotelServices = hotelServicesResponse.serviceList;
         this.errors = hotelServicesResponse.errors;
