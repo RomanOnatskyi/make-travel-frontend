@@ -45,7 +45,7 @@
     cursor: pointer;
 }
 
-.hotels-list-button:hover {
+.hotels-list-button:hover, .activeHotel {
     background-color: #FBECD8;
     color: #832736;
 }
@@ -68,7 +68,7 @@
     cursor: pointer;
 }
 
-.category-button:hover {
+.category-button:hover, .activeCategory {
     background-color: #FBECD8;
     color: #832736;
     font-weight: bold;

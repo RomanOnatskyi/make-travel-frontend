@@ -5,6 +5,7 @@
         <div class="hotels-list">
             <button *ngFor="let hotel of userHotels"
                 class="hotels-list-button"
+                [ngClass]="{ activeHotel: hotel.id == currentHotelId }"
                 (click)="hotelSelected(hotel.id)">
 
                 {{ hotel.name }}
@@ -16,6 +17,7 @@
         <div class="categories base-container">
             <button *ngFor="let category of categories"
                 class="category-button"
+                [ngClass]="{ activeCategory: category.type == currentCategory }"
                 (click)="categorySelected(category.type)">
 
                 {{ category.name }}
@@ -25,10 +27,11 @@
         <div class="services-list">
             <div *ngFor="let service of hotelServices"
                 class="services-list-item base-container">
+
                 <div class="service-content">
-                    <div>{{service.name}}</div>
-                    <div>{{service.description}}</div>
-                    <div>{{service.price}}</div>
+                    <div>{{ service.name }}</div>
+                    <div>{{ service.description }}</div>
+                    <div>{{ service.price }}</div>
                 </div>
             </div>
         </div>
