@@ -46,9 +46,14 @@
 
 }
 
-.hotels-list-button:hover, .activeHotel {
+.hotels-list-button:hover {
+    color: #FBECD8;
+}
+
+.activeHotel {
     background-color: #FBECD8;
     color: #832736;
+    pointer-events: none;
 }
 
 .categories {
@@ -69,10 +74,16 @@
     cursor: pointer;
 }
 
-.category-button:hover, .activeCategory {
+.category-button:hover {
+    color: #FBECD8;
+    font-weight: bold;
+}
+
+.activeCategory {
     background-color: #FBECD8;
     color: #832736;
     font-weight: bold;
+    pointer-events: none;
 }
 
 .services-section {
@@ -117,20 +128,21 @@
     flex-direction: column;
     flex-shrink: 1;
     word-break: break-all;
-    margin-left: 10px;
 }
 
-.service-line {
+.service-details-section {
     display: flex;
     flex-direction: column;
     flex: 1 1 auto;
-    word-break: break-all;
+    justify-content: space-between;
+    word-break: break-word;
     margin-left: 10px;
 }
 
 .service-img {
     display: flex;
     justify-content: center;
+    margin-bottom: 20px;
 }
 
 .service-img img {
@@ -140,7 +152,6 @@
 
 .service-name {
     display: flex;
-    flex-shrink: 1;
     justify-content: center;
     font-size: 25px;
     color: #FBECD8;
@@ -157,7 +168,7 @@
 
 .service-text {
     color: #FBECD8;
-    font-size: 25px;
+    font-size: 14pt;
 }
 
 .service-price {
@@ -167,31 +178,36 @@
     flex-shrink: 1;
     padding-left: 20px;
     margin-top: 20px;
-    font-size: 25px;
+    font-size: 14pt;
 }
 
-.service-button {
+.service-form-submit-button {
     padding-top: 10px;
 }
 
-.service-button button {
+.service-form-submit-button button {
     border: 1px solid #fbecd8;
     border-radius: 5px;
     background: #832736;
-    width: 170px;
+    width: 100%;
     height: 30px;
     font-size: 15px;
-    font-weight: bold;
     color: #FBECD8;
     cursor: pointer;
 }
 
-.service-button button:hover {
+.service-form-submit-button button:hover {
     background: #FBECD8;
     color: #832736;
 }
 
-.service-button a {
+.service-form-submit-button button:disabled {
+    color: #7C7979;
+    border: #7C7979 solid 1px;
+    pointer-events: none;
+}
+
+.service-form-submit-button a {
     text-decoration: none;
     color: white;
     font-size: 20px;
@@ -199,7 +215,7 @@
 }
 
 .service-input-text {
-    padding-top: 10px;
+    margin-top: 20px;
     font-size: 20px;
     color: #FBECD8;
     text-align: center;
@@ -210,7 +226,7 @@
 }
 
 .service-input input {
-    width: 170px;
+    width: 175px;
     height: 25px;
     border-radius: 3px;
 }

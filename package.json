@@ -8,8 +8,8 @@
         "test": "ng test",
         "lint": "ng lint",
         "e2e": "ng e2e",
-        "json get": "json-server.cmd --watch \"D:\\MyHub\\Projects\\Univer\\Avpz\\MakeTravel\\Backend\\db.json\"",
-        "json post": "json-server.cmd --watch \"D:\\MyHub\\Projects\\Univer\\Avpz\\MakeTravel\\Backend\\db.json\" -w"
+        "json get": "Backend\\run-get.bat",
+        "json post": "Backend\\run-post.bat"
     },
     "private": true,
     "dependencies": {

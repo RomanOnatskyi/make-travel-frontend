@@ -24,79 +24,66 @@
             </button>
         </div>
 
-        <!--        <div class="services-list">-->
-        <!--            <div *ngFor="let service of hotelServices"-->
-        <!--                class="services-list-item base-container">-->
+        <div class="services-list">
+            <div *ngFor="let service of hotelServices"
+                class="services-list-item base-container">
 
-        <!--                <div class="service-content">-->
-        <!--                    <div>{{service.name}}</div>-->
-        <!--                    <div>{{service.description}}</div>-->
-        <!--                    <div>{{service.price}}</div>-->
-        <!--                </div>-->
-        <!--            </div>-->
-        <!--        </div>-->
-
-        <div class="services-list-item base-container">
-            <div class="service-content">
-                <div class="service-image-and-form-section">
-                    <div class="service-img">
-                        <img src="assets/img/eat.png" alt="">
-                    </div>
-
-                    <form>
-                        <div class="service-input-text">
-                            Укажите дату:
+                <div class="service-content">
+                    <div class="service-image-and-form-section">
+                        <div class="service-img">
+                            <img src="assets/img/hotel-service-icons/{{ getCategoryImageName() }}.png" alt="">
                         </div>
 
-                        <div class="service-input">
-                            <label for="localDate"></label>
-                            <input type="datetime-local" id="localDate" step="1800" name="date">
-                        </div>
+                        <form>
+                            <label class="service-input-text" for="localDate">
+                                Укажите дату:
+                            </label>
 
-                        <div>
-                            <div class="service-button">
-                                <button type="submit">Заказать</button>
+                            <div class="service-input">
+                                <input type="datetime-local"
+                                    id="localDate"
+                                    name="datetime"
+                                    [disabled]="service.isOrdered"
+                                    [(ngModel)]="service.isOrdered ? service.orderDate : order.date">
                             </div>
 
-                            <div class="service-button">
-                                <button type="submit">Отменить заказ</button>
+                            <div>
+                                <div class="service-form-submit-button">
+                                    <button type="submit"
+                                        [disabled]="service.isOrdered"
+                                        (click)="makeOrder(service.id)">
+
+                                        <span>{{ service.isOrdered ? 'Заказано' : 'Заказать' }}</span>
+                                    </button>
+                                </div>
+
+                                <div *ngIf="service.isOrdered"
+                                    class="service-form-submit-button">
+                                    <button type="submit">Отменить заказ</button>
+                                </div>
                             </div>
-                        </div>
-                    </form>
-                </div>
-
-                <div class="service-line">
-                    <div class="service-name">
-                        хелп
+                        </form>
                     </div>
 
-                    <div class="service-description">
-                        <div class="service-text">
-                            Описание:
+                    <div class="service-details-section">
+
+                        <div class="service-description">
+                            <div class="service-name"> {{ service.name }} </div>
+
+                            <div class="service-text">
+                                Описание:
+                            </div>
+
+                            <div>{{ service.description }}</div>
                         </div>
 
-                        <div>шляпа тупая</div>
-                        <div>шляпа тупая</div>
-                        <div>шляпа тупая</div>
-                        <div>шляпа тупая</div>
-                        <div>шляпа тупая</div>
-                        <div>шляпа тупая</div>
-                        <div>шляпа тупая</div>
-                        <div>шляпа тупая</div>
-                        <div>шляпа тупая</div>
-                        <div>шляпа тупая</div>
-                        <div>шляпа тупая</div>
-                        <div>шляпа тупая</div>
-                        <div>шляпа тупая</div>
-                    </div>
-
-                    <div class="service-price">
-                        <div class="service-text">Цена:</div>
-                        <div>1000$</div>
+                        <div class="service-price">
+                            <div class="service-text">Цена:&nbsp;</div>
+                            <div>{{ service.price }} грн</div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-
     </div>
 </div>

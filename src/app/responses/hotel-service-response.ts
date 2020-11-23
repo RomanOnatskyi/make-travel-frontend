@@ -5,7 +5,8 @@ export class HotelService {
     name: string;
     description: string;
     price: number;
-    isOrdered: boolean;
+    isOrdered?: boolean;
+    orderDate?: string;
 }
 
 export class HotelServiceResponse extends BaseResponse {

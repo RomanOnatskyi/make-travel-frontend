@@ -3,6 +3,7 @@ import { UserHotel } from '../../../../responses/user-hotel-response';
 import { ServicesService } from '../services.service';
 import { HotelService } from '../../../../responses/hotel-service-response';
 import { ServiceCategory } from '../../../../app-state.service';
+import { Order } from '../order';
 
 @Component({
     selector: 'app-services',
@@ -17,15 +18,17 @@ export class ServicesComponent implements OnInit {
 
     async ngOnInit() {
 
-        this.userHotels = await this.updateUserHotels();
-        this.hotelServices = await this.updateServices(this.userHotels[0].id, ServiceCategory.Cleaning);
+        this.userHotels = await this.getUserHotels();
+        this.hotelServices = await this.getServices(this.userHotels[0].id, ServiceCategory.Cleaning);
+
+        this.order.date = this.getCurrentTimeAsString();
     }
 
     categories = [
-        { name: "Уборка", type: ServiceCategory.Cleaning },
-        { name: "Еда", type: ServiceCategory.Food },
-        { name: "Развлечения", type: ServiceCategory.Entertainment },
-        { name: "Ремонт", type: ServiceCategory.Repairing },
+        { name: "Уборка", type: ServiceCategory.Cleaning, imageName: "cleaning" },
+        { name: "Еда", type: ServiceCategory.Food, imageName: "food" },
+        { name: "Развлечения", type: ServiceCategory.Entertainment, imageName: "entertainment" },
+        { name: "Ремонт", type: ServiceCategory.Repairing, imageName: "repairing" },
     ];
 
     userHotels: UserHotel[];
@@ -34,17 +37,29 @@ export class ServicesComponent implements OnInit {
     currentHotelId: number;
     currentCategory: ServiceCategory;
 
+    order: Order = new Order();
+
     async hotelSelected(hotelId: number) {
 
-        this.hotelServices = await this.updateServices(hotelId, this.currentCategory);
+        this.hotelServices = await this.getServices(hotelId, this.currentCategory);
     }
 
     async categorySelected(categoryId: ServiceCategory) {
 
-        this.hotelServices = await this.updateServices(this.currentHotelId, categoryId);
+        this.hotelServices = await this.getServices(this.currentHotelId, categoryId);
     }
 
-    private async updateUserHotels() {
+    getCategoryImageName() {
+
+        for (let i = 0; i < this.categories.length; i++) {
+
+            if (this.categories[i].type == this.currentCategory) {
+                return this.categories[i].imageName;
+            }
+        }
+    }
+
+    private async getUserHotels() {
 
         const userHotelsResponse = await this.servicesService.getUserHotels().toPromise();
 
@@ -57,10 +72,12 @@ export class ServicesComponent implements OnInit {
         return userHotelsResponse.hotelList;
     }
 
-    private async updateServices(hotelId: number, categoryId: ServiceCategory) {
+    private async getServices(hotelId: number, categoryId: ServiceCategory) {
 
         this.currentHotelId = hotelId;
         this.currentCategory = categoryId;
+
+        this.order.date = this.getCurrentTimeAsString();
 
         const hotelServicesResponse = await this.servicesService.getServicesByHotelIdAndCategory(hotelId, categoryId).toPromise();
 
@@ -73,8 +90,29 @@ export class ServicesComponent implements OnInit {
         return hotelServicesResponse.serviceList;
     }
 
+    async makeOrder(serviceId: number) {
+
+        this.order.hotelId = this.currentHotelId;
+        this.order.serviceId = serviceId;
+
+        this.servicesService.sendOrder(this.order)
+            .subscribe(response => this.showError(response.errors));
+
+        this.hotelServices = await this.getServices(this.currentHotelId, this.currentCategory);
+    }
+
     private showError(errors: string) {
 
         alert(errors);
+    }
+
+    getCurrentTimeAsString() {
+
+        let currentLocalTime = new Date().toUTCString();
+        let hoursOffsetGMT = new Date().getTimezoneOffset() / 60;
+
+        currentLocalTime += hoursOffsetGMT.toString();
+
+        return new Date(currentLocalTime).toISOString().slice(0, 16);
     }
 }
