@@ -2,7 +2,7 @@
     display: flex;
     flex-direction: row;
     justify-content: center;
-    margin-top: 50px;
+    margin-top: 100px;
     height: 50%;
     width: 100%;
 }
@@ -43,6 +43,7 @@
     min-height: 50px;
     padding: 10px;
     cursor: pointer;
+
 }
 
 .hotels-list-button:hover, .activeHotel {
@@ -95,15 +96,6 @@
     margin-top: 5px;
     padding: 0;
     color: #FFFFFF;
-    cursor: pointer;
-}
-
-.services-list-item:hover {
-    box-shadow: none;
-}
-
-.service-content {
-    padding: 5px;
 }
 
 @media (max-width: 992px) {
@@ -111,3 +103,106 @@
         width: 100%;
     }
 }
+
+.service-content {
+    padding: 15px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+}
+
+.service-img{
+    width: 150px;
+    height: 150px;
+}
+
+.service-img img{
+    width: 150px;
+    height: 150px;
+}
+
+.service-line{
+    float: left;
+    word-break: break-all;
+    margin-left: 10px;
+}
+
+.service-name{
+    width: 390px;
+    font-size: 25px;
+    text-align: center;
+    color: #FBECD8;
+    font-weight: bold;
+}
+
+.service-description{
+    width: 390px;
+    padding-left: 20px;
+    font-size: 20px;
+}
+
+.service-price {
+    width: 390px;
+    padding-left: 20px;
+    font-size: 25px;
+    display: flex;
+    flex-direction: row;
+}
+
+.service-text{
+    color: #FBECD8;
+    line-height: 30px;
+    font-size: 25px;
+}
+
+.service-des{
+    width: 390px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.service-button{
+    padding-top: 10px;
+}
+
+.service-button button{
+    border: 1px solid #fbecd8;
+    border-radius: 5px;
+    background: #832736;
+    width: 170px;
+    height: 30px;
+    font-size: 15px;
+    font-weight: bold;
+    color: #FBECD8;
+    cursor: pointer;
+}
+
+.service-button button:hover{
+    background: #FBECD8;
+    color: #832736;
+}
+
+.service-button a{
+    text-decoration: none;
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.service-input-text{
+    padding-top: 10px;
+    font-size: 20px;
+    color: #FBECD8;
+    text-align: center;
+}
+
+.service-input{
+    padding-top: 10px;
+}
+
+.service-input input{
+    width: 170px;
+    height: 25px;
+    border-radius: 3px;
+}
+
