@@ -19,16 +19,66 @@
             <button class="category-button">Ремонт</button>
         </div>
 
-        <div class="services-list">
-            <div *ngFor="let service of hotelServices"
-                class="services-list-item base-container">
+        <!--        <div class="services-list">-->
+        <!--            <div *ngFor="let service of hotelServices"-->
+        <!--                class="services-list-item base-container">-->
 
-                <div class="service-content">
-                    <div>{{service.name}}</div>
-                    <div>{{service.description}}</div>
-                    <div>{{service.price}}</div>
+        <!--                <div class="service-content">-->
+        <!--                    <div>{{service.name}}</div>-->
+        <!--                    <div>{{service.description}}</div>-->
+        <!--                    <div>{{service.price}}</div>-->
+        <!--                </div>-->
+        <!--            </div>-->
+        <!--        </div>-->
+
+        <div class="services-list-item base-container">
+            <div class="service-content">
+                <div class="service-line">
+                    <div class="service-img">
+                        <img src="assets/img/eat.png" alt="">
+                    </div>
+
+                    <form>
+                        <div class="service-input-text">Укажите дату:</div>
+
+                        <div class="service-input">
+                            <label for="localDate"></label>
+                                <input type="datetime-local" id="localDate" step="1800" name="date">
+                        </div>
+
+                        <div class="service-button">
+                            <button type="submit">Заказать</button>
+                        </div>
+
+                        <div class="service-button">
+                            <button type="submit">Отменить заказ</button>
+                        </div>
+                    </form>
+                </div>
+
+                <div class="service-line">
+                    <div class="service-name">
+                        хелп
+                    </div>
+
+                    <div class="service-description">
+                        <div class="service-text">Описание:</div>
+
+                        <div class="service-des">шляпа тупая</div>
+                        <div>шляпа тупая</div>
+                        <div>шляпа тупая</div>
+                        <div>шляпа тупая</div>
+                        <div>шляпа тупая</div>
+                        <div class="service-des">шляпа тупая</div>
+                    </div>
+
+                    <div class="service-price">
+                        <div class="service-text">Цена:</div>
+                        1000$
+                    </div>
                 </div>
             </div>
         </div>
+
     </div>
 </div>
