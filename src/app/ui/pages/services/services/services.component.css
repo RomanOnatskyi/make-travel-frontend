@@ -98,7 +98,7 @@
     color: #FFFFFF;
 }
 
-@media (max-width: 992px) {
+@media (max-width: 1200px) {
     .services-list-item {
         width: 100%;
     }
@@ -108,64 +108,73 @@
     padding: 15px;
     display: flex;
     flex-direction: row;
+    flex: 1 1 auto;
     flex-wrap: nowrap;
 }
 
-.service-img{
-    width: 150px;
-    height: 150px;
-}
-
-.service-img img{
-    width: 150px;
-    height: 150px;
-}
-
-.service-line{
-    float: left;
+.service-image-and-form-section {
+    display: flex;
+    flex-direction: column;
+    flex-shrink: 1;
     word-break: break-all;
     margin-left: 10px;
 }
 
-.service-name{
-    width: 390px;
+.service-line {
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 auto;
+    word-break: break-all;
+    margin-left: 10px;
+}
+
+.service-img {
+    display: flex;
+    justify-content: center;
+}
+
+.service-img img {
+    width: 150px;
+    height: 150px;
+}
+
+.service-name {
+    display: flex;
+    flex-shrink: 1;
+    justify-content: center;
     font-size: 25px;
-    text-align: center;
     color: #FBECD8;
     font-weight: bold;
 }
 
-.service-description{
-    width: 390px;
+.service-description {
+    display: flex;
+    flex-direction: column;
+    flex-shrink: 1;
     padding-left: 20px;
     font-size: 20px;
 }
 
-.service-price {
-    width: 390px;
-    padding-left: 20px;
+.service-text {
+    color: #FBECD8;
     font-size: 25px;
+}
+
+.service-price {
     display: flex;
     flex-direction: row;
-}
-
-.service-text{
-    color: #FBECD8;
-    line-height: 30px;
+    justify-content: flex-end;
+    flex-shrink: 1;
+    padding-left: 20px;
+    margin-top: 20px;
     font-size: 25px;
 }
 
-.service-des{
-    width: 390px;
-    padding-top: 5px;
-    padding-bottom: 5px;
-}
-
-.service-button{
+.service-button {
     padding-top: 10px;
 }
 
-.service-button button{
+.service-button button {
     border: 1px solid #fbecd8;
     border-radius: 5px;
     background: #832736;
@@ -177,30 +186,30 @@
     cursor: pointer;
 }
 
-.service-button button:hover{
+.service-button button:hover {
     background: #FBECD8;
     color: #832736;
 }
 
-.service-button a{
+.service-button a {
     text-decoration: none;
     color: white;
     font-size: 20px;
     font-weight: bold;
 }
 
-.service-input-text{
+.service-input-text {
     padding-top: 10px;
     font-size: 20px;
     color: #FBECD8;
     text-align: center;
 }
 
-.service-input{
+.service-input {
     padding-top: 10px;
 }
 
-.service-input input{
+.service-input input {
     width: 170px;
     height: 25px;
     border-radius: 3px;
