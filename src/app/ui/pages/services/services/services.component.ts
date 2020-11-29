@@ -63,9 +63,9 @@ export class ServicesComponent implements OnInit {
 
         const userHotelsResponse = await this.servicesService.getUserHotels().toPromise();
 
-        const error = userHotelsResponse.errors;
+        const error = [ userHotelsResponse.errors ];
 
-        if (error) {
+        if (error[0]) {
             this.showError(error);
         }
 
@@ -79,31 +79,40 @@ export class ServicesComponent implements OnInit {
 
         this.order.date = this.getCurrentTimeAsString();
 
+        const hotelOrderedServicesResponse = await this.servicesService.getOrderedServicesByHotelIdAndCategory(hotelId, categoryId).toPromise();
         const hotelServicesResponse = await this.servicesService.getServicesByHotelIdAndCategory(hotelId, categoryId).toPromise();
 
-        const error = hotelServicesResponse.errors;
+        const error = [ hotelOrderedServicesResponse.errors, hotelServicesResponse.errors ];
 
-        if (error) {
+        if (error[0] || error[1]) {
             this.showError(error);
         }
 
-        return hotelServicesResponse.serviceList;
+        let resultArrayOfServices = hotelOrderedServicesResponse.serviceList;
+
+        // resultArrayOfServices = resultArrayOfServices.concat(hotelServicesResponse.serviceList);
+        Array.prototype.push.apply(resultArrayOfServices, hotelServicesResponse.serviceList);
+
+        return resultArrayOfServices;
     }
 
     async makeOrder(serviceId: number) {
 
         this.order.hotelId = this.currentHotelId;
         this.order.serviceId = serviceId;
+        this.order.userLogin = "login";
 
         this.servicesService.sendOrder(this.order)
-            .subscribe(response => this.showError(response.errors));
+            .subscribe(response => this.showError([ response.errors ]));
 
         this.hotelServices = await this.getServices(this.currentHotelId, this.currentCategory);
     }
 
-    private showError(errors: string) {
+    private showError(errors: string[]) {
 
-        alert(errors);
+        for (let i = 0; i < errors.length; i++) {
+            alert(errors[i]);
+        }
     }
 
     getCurrentTimeAsString() {

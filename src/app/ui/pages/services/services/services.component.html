@@ -43,21 +43,21 @@
                                 <input type="datetime-local"
                                     id="localDate"
                                     name="datetime"
-                                    [disabled]="service.isOrdered"
-                                    [(ngModel)]="service.isOrdered ? service.orderDate : order.date">
+                                    [disabled]="service.orderDate"
+                                    [(ngModel)]="service.orderDate ? service.orderDate : order.date">
                             </div>
 
                             <div>
                                 <div class="service-form-submit-button">
                                     <button type="submit"
-                                        [disabled]="service.isOrdered"
+                                        [disabled]="service.orderDate"
                                         (click)="makeOrder(service.id)">
 
-                                        <span>{{ service.isOrdered ? 'Заказано' : 'Заказать' }}</span>
+                                        <span>{{ service.orderDate ? 'Заказано' : 'Заказать' }}</span>
                                     </button>
                                 </div>
 
-                                <div *ngIf="service.isOrdered"
+                                <div *ngIf="service.orderDate"
                                     class="service-form-submit-button">
                                     <button type="submit">Отменить заказ</button>
                                 </div>
