@@ -8,6 +8,7 @@ import { FooterModule } from './ui/footer/footer.module';
 import { MainModule } from './ui/pages/main/main.module';
 import { AuthModule } from './ui/pages/auth/auth.module';
 import { MainMenuModule } from './ui/main-menu/main-menu.module';
+import { ServicesModule } from './ui/pages/services/services.module';
 
 @NgModule({
     declarations: [
@@ -21,6 +22,7 @@ import { MainMenuModule } from './ui/main-menu/main-menu.module';
         MainModule,
         AuthModule,
         MainMenuModule,
+        ServicesModule,
     ],
     providers: [],
     bootstrap: [AppComponent],

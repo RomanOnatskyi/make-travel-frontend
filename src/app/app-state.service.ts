@@ -24,3 +24,11 @@ export enum UserRole {
     HotelAdmin = "HotelAdmin",
     SystemAdmin = "SystemAdmin",
 }
+
+export enum ServiceCategory {
+
+    Cleaning,
+    Food,
+    Entertainment,
+    Repairing,
+}

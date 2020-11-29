@@ -2,9 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AppStateService } from '../../../../app-state.service';
 import { AuthService } from '../auth.service';
-import { AuthResponse } from '../auth-response';
+import { AuthResponse } from '../../../../responses/auth-response';
 import { SignUpUser } from '../users';
-import { CaptchaResponse } from '../captcha-response';
+import { CaptchaResponse } from '../../../../responses/captcha-response';
 
 @Component({
     selector: 'app-sign-up',
@@ -16,7 +16,7 @@ import { CaptchaResponse } from '../captcha-response';
             [authError]="authError"
             [captchaError]="captchaError"
             (updateCaptcha)="updateCaptcha()"
-            (dismissAuthError)="authError = null;"
+            (dismissAuthError)="authError = null"
             (dismissCaptchaError)="captchaError = null"
             (submit)="submit()">
         </app-auth-content>`,

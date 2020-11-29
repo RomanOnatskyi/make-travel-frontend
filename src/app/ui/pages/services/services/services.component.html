@@ -1,0 +1,89 @@
+<div class="page-content">
+    <div class="hotels-section base-container">
+        <div class="hotels-section-header">Ваш отель</div>
+
+        <div class="hotels-list">
+            <button *ngFor="let hotel of userHotels"
+                class="hotels-list-button"
+                [ngClass]="{ activeHotel: hotel.id == currentHotelId }"
+                (click)="hotelSelected(hotel.id)">
+
+                {{ hotel.name }}
+            </button>
+        </div>
+    </div>
+
+    <div class="services-section">
+        <div class="categories base-container">
+            <button *ngFor="let category of categories"
+                class="category-button"
+                [ngClass]="{ activeCategory: category.type == currentCategory }"
+                (click)="categorySelected(category.type)">
+
+                {{ category.name }}
+            </button>
+        </div>
+
+        <div class="services-list">
+            <div *ngFor="let service of hotelServices"
+                class="services-list-item base-container">
+
+                <div class="service-content">
+                    <div class="service-image-and-form-section">
+                        <div class="service-img">
+                            <img src="assets/img/hotel-service-icons/{{ getCategoryImageName() }}.png" alt="">
+                        </div>
+
+                        <form>
+                            <label class="service-input-text" for="localDate">
+                                Укажите дату:
+                            </label>
+
+                            <div class="service-input">
+                                <input type="datetime-local"
+                                    id="localDate"
+                                    name="datetime"
+                                    [disabled]="service.orderDate"
+                                    [(ngModel)]="service.orderDate ? service.orderDate : order.date">
+                            </div>
+
+                            <div>
+                                <div class="service-form-submit-button">
+                                    <button type="submit"
+                                        [disabled]="service.orderDate"
+                                        (click)="makeOrder(service.id)">
+
+                                        <span>{{ service.orderDate ? 'Заказано' : 'Заказать' }}</span>
+                                    </button>
+                                </div>
+
+                                <div *ngIf="service.orderDate"
+                                    class="service-form-submit-button">
+                                    <button type="submit">Отменить заказ</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+
+                    <div class="service-details-section">
+
+                        <div class="service-description">
+                            <div class="service-name"> {{ service.name }} </div>
+
+                            <div class="service-text">
+                                Описание:
+                            </div>
+
+                            <div>{{ service.description }}</div>
+                        </div>
+
+                        <div class="service-price">
+                            <div class="service-text">Цена:&nbsp;</div>
+                            <div>{{ service.price }} грн</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
