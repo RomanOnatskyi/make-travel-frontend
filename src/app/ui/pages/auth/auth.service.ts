@@ -3,9 +3,9 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { catchError } from 'rxjs/operators';
 import { SignInUser, SignUpUser } from './users';
 import { AppStateService } from '../../../app-state.service';
-import { AuthResponse } from './auth-response';
+import { AuthResponse } from '../../../responses/auth-response';
 import { HandleError } from '../../../handle-error';
-import { CaptchaResponse } from './captcha-response';
+import { CaptchaResponse } from '../../../responses/captcha-response';
 
 @Injectable({
     providedIn: 'root',

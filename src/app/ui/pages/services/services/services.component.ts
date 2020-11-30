@@ -65,9 +65,7 @@ export class ServicesComponent implements OnInit {
 
         const error = [ userHotelsResponse.errors ];
 
-        if (error[0]) {
-            this.showError(error);
-        }
+        this.showError(error);
 
         return userHotelsResponse.hotelList;
     }
@@ -84,9 +82,7 @@ export class ServicesComponent implements OnInit {
 
         const error = [ hotelOrderedServicesResponse.errors, hotelServicesResponse.errors ];
 
-        if (error[0] || error[1]) {
-            this.showError(error);
-        }
+        this.showError(error);
 
         let resultArrayOfServices = hotelOrderedServicesResponse.serviceList;
 
@@ -111,7 +107,9 @@ export class ServicesComponent implements OnInit {
     private showError(errors: string[]) {
 
         for (let i = 0; i < errors.length; i++) {
-            alert(errors[i]);
+            if (errors[i]) {
+                alert(errors[i]);
+            }
         }
     }
 

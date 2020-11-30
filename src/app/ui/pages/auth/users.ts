@@ -9,6 +9,6 @@ export class SignUpUser {
     name: string;
     email: string;
     passport: string;
-    captchaId: number;
+    captchaId: string;
     captchaValue: string;
 }

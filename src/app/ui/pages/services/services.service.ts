@@ -24,8 +24,8 @@ export class ServicesService {
     getUserHotels() {
 
         // todo: add token to url
-        // return this.http.get<UserHotelResponse>(`http://localhost:3000/hotels`).pipe(
-        return this.http.get<UserHotelResponse>(`${this.appState.baseUrl}/hotels/getHotels/login`).pipe(
+        return this.http.get<UserHotelResponse>(`http://localhost:3000/hotels`).pipe(
+        // return this.http.get<UserHotelResponse>(`${this.appState.baseUrl}/hotels/getHotels/login`).pipe(
             catchError(HandleError<UserHotelResponse>('Getting hotels info')),
         );
     }
@@ -33,8 +33,8 @@ export class ServicesService {
     getServicesByHotelIdAndCategory(hotelId: number, categoryId: number) {
 
         // todo: add token to url
-        // return this.http.get<HotelServiceResponse>(`http://localhost:3000/services`).pipe(
-        return this.http.get<HotelServiceResponse>(`${this.appState.baseUrl}/services/forHotel/${hotelId}/${categoryId}`).pipe(
+        return this.http.get<HotelServiceResponse>(`http://localhost:3000/services`).pipe(
+        // return this.http.get<HotelServiceResponse>(`${this.appState.baseUrl}/services/forHotel/${hotelId}/${categoryId}`).pipe(
             catchError(HandleError<HotelServiceResponse>('Getting services info')),
         );
     }
@@ -42,8 +42,8 @@ export class ServicesService {
     getOrderedServicesByHotelIdAndCategory(hotelId: number, categoryId: number) {
 
         // todo: add token to url
-        // return this.http.get<HotelServiceResponse>(`http://localhost:3000/orderedServices`).pipe(
-        return this.http.get<HotelServiceResponse>(`${this.appState.baseUrl}/services/orderedForHotelAndUser/${hotelId}/${categoryId}/login`).pipe(
+        return this.http.get<HotelServiceResponse>(`http://localhost:3000/orderedServices`).pipe(
+        // return this.http.get<HotelServiceResponse>(`${this.appState.baseUrl}/services/orderedForHotelAndUser/${hotelId}/${categoryId}/login`).pipe(
             catchError(HandleError<HotelServiceResponse>('Getting services info')),
         );
     }

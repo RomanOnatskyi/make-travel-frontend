@@ -10,16 +10,22 @@ import { CaptchaResponse } from '../../../../responses/captcha-response';
     selector: 'app-sign-up',
     template: `
         <app-auth-content
+            *ngIf="user.captchaId; else loading"
             action="sign-up"
             [user]="user"
             [processing]="processing"
+            [captchaId]="user.captchaId"
             [authError]="authError"
             [captchaError]="captchaError"
             (updateCaptcha)="updateCaptcha()"
             (dismissAuthError)="authError = null"
             (dismissCaptchaError)="captchaError = null"
             (submit)="submit()">
-        </app-auth-content>`,
+        </app-auth-content>
+        
+        <ng-template #loading>
+            Loading...
+        </ng-template>`,
 })
 export class SignUpComponent implements OnInit {
 
@@ -61,7 +67,7 @@ export class SignUpComponent implements OnInit {
         this.captchaError = captcha.errors;
         this.processing = false;
 
-        this.user.captchaId = captcha.captchaId;
+        this.user.captchaId = captcha.captchaId.toString();
 
         if (this.captchaError) {
             window.scrollTo(0, 0);
