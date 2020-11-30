@@ -33,6 +33,7 @@
     font-size: 12pt;
     min-width: 100px;
     flex: 1;
+    cursor: pointer;
 }
 
 .main-menu-button:hover{
