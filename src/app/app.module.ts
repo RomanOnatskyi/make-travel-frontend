@@ -9,6 +9,7 @@ import { MainModule } from './ui/pages/main/main.module';
 import { AuthModule } from './ui/pages/auth/auth.module';
 import { MainMenuModule } from './ui/main-menu/main-menu.module';
 import { ServicesModule } from './ui/pages/services/services.module';
+import { CreateServiceModule } from './ui/pages/create-service/create-service.module';
 
 @NgModule({
     declarations: [
@@ -23,6 +24,7 @@ import { ServicesModule } from './ui/pages/services/services.module';
         AuthModule,
         MainMenuModule,
         ServicesModule,
+        CreateServiceModule,
     ],
     providers: [],
     bootstrap: [AppComponent],
