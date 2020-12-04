@@ -55,7 +55,18 @@ export class ServicesService {
 
         // todo: add token to url
         return this.http.get<BaseResponse>(`${this.appState.baseUrl}/order`, { params }).pipe(
-            catchError(HandleError<UserHotelResponse>('Making order')),
+            catchError(HandleError<BaseResponse>('Making order')),
+        );
+    }
+
+    cancelOrder(orderId: number) {
+
+        const params = new HttpParams()
+            .set('values', orderId.toString());
+
+        // todo: add token to url
+        return this.http.get<BaseResponse>(`${this.appState.baseUrl}/order/decline`, { params }).pipe(
+            catchError(HandleError<BaseResponse>('Declining order')),
         );
     }
 }

@@ -86,7 +86,6 @@ export class ServicesComponent implements OnInit {
 
         let resultArrayOfServices = hotelOrderedServicesResponse.serviceList;
 
-        // resultArrayOfServices = resultArrayOfServices.concat(hotelServicesResponse.serviceList);
         Array.prototype.push.apply(resultArrayOfServices, hotelServicesResponse.serviceList);
 
         return resultArrayOfServices;
@@ -99,6 +98,14 @@ export class ServicesComponent implements OnInit {
         this.order.userLogin = "login";
 
         this.servicesService.sendOrder(this.order)
+            .subscribe(response => this.showError([ response.errors ]));
+
+        this.hotelServices = await this.getServices(this.currentHotelId, this.currentCategory);
+    }
+
+    async cancelOrder(orderId: number) {
+
+        this.servicesService.cancelOrder(orderId)
             .subscribe(response => this.showError([ response.errors ]));
 
         this.hotelServices = await this.getServices(this.currentHotelId, this.currentCategory);
