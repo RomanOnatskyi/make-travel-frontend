@@ -1,1 +1,102 @@
-<p>create-service works!</p>
+<div class="service-creation-content">
+    <div class="service-creation-header">
+        <hr>
+        <div>Новая услуга</div>
+        <hr>
+    </div>
+
+    <div *ngIf="serviceCreationError"
+        class="errors">
+        <div>Ошибка!</div>
+        <div class="errors-text">{{ serviceCreationError }}</div>
+
+        <button class="errors-button"
+            type="button"
+            (click)="serviceCreationError = null">Ок
+        </button>
+    </div>
+
+    <form #form="ngForm"
+        class="service-creation-form"
+        novalidate>
+        <div class="service-creation-form-item">
+            <label for="name">Название</label>
+            <input type="text"
+                #name="ngModel"
+                id="name"
+                name="name"
+                required
+                pattern="[a-zA-Zа-яА-Яёіїє -.,]{5,30}"
+                [(ngModel)]="newHotelService.name">
+
+            <div *ngIf="name.invalid && (name.dirty || name.touched)"
+                class="validation-warning">
+                <div *ngIf="name.errors.required">Заполните это поле!</div>
+                <div *ngIf="name.errors.pattern">Введите 5-30 букв</div>
+            </div>
+        </div>
+
+        <div class="service-creation-form-item">
+            <label for="description">Описание</label>
+            <textarea type="text"
+                #description="ngModel"
+                id="description"
+                name="description"
+                cols="20"
+                required
+                pattern="[a-zA-Zа-яА-Яёіїє -!.,']{5,1000}"
+                [(ngModel)]="newHotelService.description">
+            </textarea>
+
+            <div *ngIf="description.invalid && (description.dirty || description.touched)"
+                class="validation-warning">
+                <div *ngIf="description.errors.required">Заполните это поле!</div>
+                <div *ngIf="description.errors.pattern">Введите хотя бы 5 букв</div>
+            </div>
+        </div>
+
+        <div class="service-creation-form-item">
+            <label for="category">Категория</label>
+            <select type="text"
+                id="category"
+                name="category"
+                required
+                [(ngModel)]="newHotelService.category">
+
+                <option *ngFor="let category of categories"
+                    value="{{ category.value }}">
+
+                    {{ category.name }}
+                </option>
+            </select>
+        </div>
+
+        <div class="service-creation-form-item">
+            <label for="price">Стоимость</label>
+            <input type="number"
+                #price="ngModel"
+                id="price"
+                name="price"
+                required
+                step="50"
+                pattern="([0-9]+[.]?[0-9]+)"
+                [(ngModel)]="newHotelService.price">
+
+            <div *ngIf="price.invalid && (price.dirty || price.touched)"
+                class="validation-warning">
+                <div *ngIf="price.errors.required">Заполните это поле!</div>
+                <div *ngIf="price.errors.pattern">Вы должны ввести число. Если оно дробное, используйте запятую</div>
+            </div>
+        </div>
+
+        <div class="service-creation-form-submit-item">
+            <button type="submit"
+                [ngClass]="{ formSubmitting: processing }"
+                [disabled]="form.invalid || processing"
+                (click)="submit()">
+
+                <span>{{ processing ? 'Обработка..' : 'Создать' }}</span>
+            </button>
+        </div>
+    </form>
+</div>
