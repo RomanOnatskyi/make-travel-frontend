@@ -1,0 +1,79 @@
+.page-content {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-top: 100px;
+    height: 50%;
+    width: 100%;
+}
+
+.base-container {
+    background-color: #832736;
+    border-radius: 6px;
+    box-shadow: 0 2px 5px #000000;
+}
+
+.hotel-order-content {
+    color: white;
+    padding: 15px;
+    min-width: 1250px;
+}
+
+.hotel-order-con-text{
+    display: flex;
+    flex-direction: row;
+}
+
+
+.hotel-order-zak, .hotel-order-id-zak,
+.hotel-order-id-zaka, .hotel-order-nam,
+.hotel-order-date, .hotel-order-date-sos{
+    font-size: 20px;
+    color: #FBECD8;
+    font-weight: bold;
+    flex-shrink: 1;
+}
+
+.hotel-order-con-1{
+    margin-left: 70px;
+    line-height: 30px;
+}
+
+.hotel-order-con-2{
+    margin-left: 30%;
+    line-height: 30px;
+}
+
+.hotel-order-text{
+    line-height: 50px;
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+}
+
+.hotel-order-tt{
+    font-size: 20px;
+    padding-left: 5px;
+}
+
+.hotel-order-form-section{
+    border: 2px solid white;
+    border-radius: 4px;
+    margin: 10px;
+    padding: 20px 20px 20px 0;
+}
+
+.status {
+    text-align: center;
+    margin-left: 43%;
+    padding-top: 15px;
+}
+
+.status-text{
+    font-size: 25px;
+    border: 2px solid #FBECD8;
+    border-radius: 4px;
+    width: 130px;
+    height: 30px;
+    padding: 8px;
+}
