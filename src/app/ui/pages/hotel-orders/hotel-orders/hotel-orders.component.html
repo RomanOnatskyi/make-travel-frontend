@@ -1,7 +1,8 @@
 <div class="page-content">
     <div class="hotel-order-content">
-        <!--Заказ 1-->
-        <div class="hotel-order-form-section base-container">
+        <div *ngFor="let order of hotelOrders"
+            class="hotel-order-form-section base-container">
+
             <div class="hotel-order-con-text">
                 <div class="hotel-order-con-1">
                     <div class="hotel-order-text">
@@ -10,7 +11,7 @@
                         </div>
 
                         <div class="hotel-order-tt">
-                            Уборка
+                            {{ order.category }}
                         </div>
                     </div>
 
@@ -20,7 +21,7 @@
                         </div>
 
                         <div class="hotel-order-tt">
-                            1
+                            {{ order.orderId }}
                         </div>
                     </div>
 
@@ -30,7 +31,7 @@
                         </div>
 
                         <div class="hotel-order-tt">
-                            5
+                            {{ order.userId }}
                         </div>
                     </div>
                 </div>
@@ -42,27 +43,27 @@
                         </div>
 
                         <div class="hotel-order-tt">
-                            Хелп плз
+                            {{ order.orderName }}
                         </div>
                     </div>
 
                     <div class="hotel-order-text">
                         <div class="hotel-order-date-sos">
-                            Дата составления заказа:
+                            Время составления заказа:
                         </div>
 
                         <div class="hotel-order-tt">
-                            06.12.2020 15:30
+                            {{ order.makingOrderDate }}
                         </div>
                     </div>
 
                     <div class="hotel-order-text">
                         <div class="hotel-order-date">
-                            Дата, на которую закано:
+                            Время, на которое закано:
                         </div>
 
                         <div class="hotel-order-tt">
-                            06.12.2020 17:30
+                            {{ order.orderDate }}
                         </div>
                     </div>
                 </div>
@@ -70,7 +71,7 @@
 
             <div class="status">
                 <div class="status-text">
-                    В работе...
+                    {{ order.status }}
                 </div>
             </div>
         </div>
