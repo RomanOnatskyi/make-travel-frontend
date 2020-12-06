@@ -13,6 +13,15 @@
     box-shadow: 0 2px 5px #000000;
 }
 
+.user-list-header {
+    display: flex;
+    justify-content: center;
+    padding: 10px 0;
+    margin-bottom: 10px;
+    color: #FBECD8;
+    font-size: 18pt;
+}
+
 .user-form-section {
     margin: 10px;
     padding: 20px 20px 20px 0;
