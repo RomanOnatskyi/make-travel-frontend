@@ -47,12 +47,8 @@ export class SignInComponent {
             return;
         }
 
-        // TODO: сохранить токен
-        const token = response.token || '';
-
-        // TODO: присвоить пользователю роль
-        // this.appStateService.appState.currentUser = response.userRole as UserRole;
-        this.appStateService.appState.currentUser = UserRole.Client;
+        this.appStateService.appState.userToken = response.token || '';
+        this.appStateService.appState.currentUser = response.userRole;
 
         this.router.navigateByUrl('main');
     }

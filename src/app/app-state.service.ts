@@ -12,8 +12,9 @@ export class AppStateService {
 
 export class AppState {
 
-    currentUser: UserRole = UserRole.Unauthorized;
     baseUrl = "http://localhost:8080/maketravel/api";
+    currentUser: UserRole = UserRole.Unauthorized;
+    userToken: string;
 }
 
 export enum UserRole {
