@@ -23,27 +23,24 @@ export class ServicesService {
 
     getUserHotels() {
 
-        // todo: add token to url
         // return this.http.get<UserHotelResponse>(`http://localhost:3000/hotels`).pipe(
-        return this.http.get<UserHotelResponse>(`${this.appState.baseUrl}/hotels/getHotels/login`).pipe(
+        return this.http.get<UserHotelResponse>(`${this.appState.baseUrl}/hotels/getHotels/${this.appState.userToken}`).pipe(
             catchError(HandleError<UserHotelResponse>('Getting hotels info')),
         );
     }
 
     getServicesByHotelIdAndCategory(hotelId: number, categoryId: number) {
 
-        // todo: add token to url
         // return this.http.get<HotelServiceResponse>(`http://localhost:3000/services`).pipe(
-        return this.http.get<HotelServiceResponse>(`${this.appState.baseUrl}/services/forHotel/${hotelId}/${categoryId}`).pipe(
+        return this.http.get<HotelServiceResponse>(`${this.appState.baseUrl}/services/forHotel/${hotelId}/${categoryId}/${this.appState.userToken}`).pipe(
             catchError(HandleError<HotelServiceResponse>('Getting services info')),
         );
     }
 
     getOrderedServicesByHotelIdAndCategory(hotelId: number, categoryId: number) {
 
-        // todo: add token to url
         // return this.http.get<HotelServiceResponse>(`http://localhost:3000/orderedServices`).pipe(
-        return this.http.get<HotelServiceResponse>(`${this.appState.baseUrl}/services/orderedForHotelAndUser/${hotelId}/${categoryId}/login`).pipe(
+        return this.http.get<HotelServiceResponse>(`${this.appState.baseUrl}/services/orderedForHotelAndUser/${hotelId}/${categoryId}/${this.appState.userToken}`).pipe(
             catchError(HandleError<HotelServiceResponse>('Getting services info')),
         );
     }
@@ -53,8 +50,7 @@ export class ServicesService {
         const params = new HttpParams()
             .set('values', JSON.stringify(order));
 
-        // todo: add token to url
-        return this.http.get<BaseResponse>(`${this.appState.baseUrl}/order`, { params }).pipe(
+        return this.http.get<BaseResponse>(`${this.appState.baseUrl}/order/${this.appState.userToken}`, { params }).pipe(
             catchError(HandleError<BaseResponse>('Making order')),
         );
     }
@@ -64,8 +60,7 @@ export class ServicesService {
         const params = new HttpParams()
             .set('values', orderId.toString());
 
-        // todo: add token to url
-        return this.http.get<BaseResponse>(`${this.appState.baseUrl}/order/decline`, { params }).pipe(
+        return this.http.get<BaseResponse>(`${this.appState.baseUrl}/order/decline/${this.appState.userToken}`, { params }).pipe(
             catchError(HandleError<BaseResponse>('Declining order')),
         );
     }

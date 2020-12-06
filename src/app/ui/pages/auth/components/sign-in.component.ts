@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { AppStateService, UserRole } from '../../../../app-state.service';
+import { AppStateService } from '../../../../app-state.service';
 import { AuthService } from '../auth.service';
 import { AuthResponse } from '../../../../responses/auth-response';
 import { SignInUser } from '../users';
