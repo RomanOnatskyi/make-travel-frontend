@@ -1,102 +1,67 @@
-<div class="page-content">
+<div class="user-list-content">
     <div class="user-content">
-        <!--Пользователь 1-->
-        <div class="user-form-section base-container">
+        <div *ngFor="let user of users"
+            class="user-form-section base-container">
+
             <div class="user-con-text">
                 <div class="user-con-1">
                     <div class="user-text">
                         <div class="user-login">
                             Логин:
                         </div>
+
                         <div class="user-tt">
-                            SHO
+                            {{ user.login }}
                         </div>
                     </div>
+
                     <div class="user-text">
                         <div class="user-passport">
                             ФИО:
                         </div>
+
                         <div class="user-tt">
-                            SHO
+                            {{ user.name }}
                         </div>
                     </div>
                 </div>
+
                 <div class="user-con-2">
                     <div class="user-text">
                         <div class="user-login">
                             Паспорт:
                         </div>
+
                         <div class="user-tt">
-                            SHO
+                            {{ user.passport }}
                         </div>
                     </div>
+
                     <div class="user-text">
                         <div class="user-passport">
                             E-mail:
                         </div>
+
                         <div class="user-tt">
-                            SHO
+                            {{ user.email }}
                         </div>
                     </div>
                 </div>
             </div>
-            <form class="bt">
-                <button class="user-uban">
-                    Забанить
-                </button>
-                <button class="user-uban">
+
+            <div class="bt">
+                <button *ngIf="!user.isBanned"
+                    (click)="unbanUser(user.id)"
+                    class="user-uban">
                     Разбанить
                 </button>
-            </form>
-        </div>
-        <!--Пользователь 2-->
-        <div class="user-form-section base-container">
-            <div class="user-con-text">
-                <div class="user-con-1">
-                    <div class="user-text">
-                        <div class="user-login">
-                            Логин:
-                        </div>
-                        <div class="user-tt">
-                            SHO
-                        </div>
-                    </div>
-                    <div class="user-text">
-                        <div class="user-passport">
-                            ФИО:
-                        </div>
-                        <div class="user-tt">
-                            SHO
-                        </div>
-                    </div>
-                </div>
-                <div class="user-con-2">
-                    <div class="user-text">
-                        <div class="user-login">
-                            Паспорт:
-                        </div>
-                        <div class="user-tt">
-                            SHO
-                        </div>
-                    </div>
-                    <div class="user-text">
-                        <div class="user-passport">
-                            E-mail:
-                        </div>
-                        <div class="user-tt">
-                            SHO
-                        </div>
-                    </div>
-                </div>
+
+                <button *ngIf="!user.isBanned"
+                    (click)="banUser(user.id)"
+                    class="user-uban">
+                    Забанить
+                </button>
             </div>
-            <form class="bt">
-                <button class="user-uban">
-                    Забанить
-                </button>
-                <button class="user-uban">
-                    Разбанить
-                </button>
-            </form>
         </div>
     </div>
 </div>
