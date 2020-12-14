@@ -20,9 +20,8 @@ export class CreateServiceService {
 
     createService(service: NewHotelService) {
 
-        // todo add user token
         const params = new HttpParams().set('values', JSON.stringify(service));
-        return this.http.get<BaseResponse>(`${this.appState.baseUrl}/services/create/login`, { params }).pipe(
+        return this.http.get<BaseResponse>(`${this.appState.baseUrl}/administration/create-service/${this.appState.userToken}`, { params }).pipe(
             catchError(HandleError<BaseResponse>('Service creating')),
         );
     }

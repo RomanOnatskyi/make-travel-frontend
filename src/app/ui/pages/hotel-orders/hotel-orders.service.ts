@@ -20,9 +20,8 @@ export class HotelOrdersService {
 
     getHotelOrders() {
 
-        // todo: add token to url
         // return this.http.get<UserHotelResponse>(`http://localhost:3000/hotels`).pipe(
-        return this.http.get<HotelOrdersResponse>(`${this.appState.baseUrl}/hotels/getOrders/login`).pipe(
+        return this.http.get<HotelOrdersResponse>(`${this.appState.baseUrl}/hotels/getOrders/${this.appState.userToken}`).pipe(
             catchError(HandleError<HotelOrdersResponse>('Getting hotel orders')),
         );
     }

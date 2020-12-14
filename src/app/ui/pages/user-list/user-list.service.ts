@@ -21,39 +21,26 @@ export class UserListService {
 
     getBannedUsers() {
 
-        // todo: add token to url
-        return this.http.get<UserListResponse>(`${this.appState.baseUrl}/users/getBanned`).pipe(
+        return this.http.get<UserListResponse>(`${this.appState.baseUrl}/users/getBanned/${this.appState.userToken}`).pipe(
             catchError(HandleError<UserListResponse>('Getting banned users')),
         );
     }
 
     getCommonUsers() {
 
-        // todo: add token to url
-        return this.http.get<UserListResponse>(`${this.appState.baseUrl}/users/getCommon`).pipe(
+        return this.http.get<UserListResponse>(`${this.appState.baseUrl}/users/getCommon/${this.appState.userToken}`).pipe(
             catchError(HandleError<UserListResponse>('Getting non-banned users')),
         );
     }
 
-    banUser(userId: number) {
+    changeUserAccess(userId: number, status: boolean) {
 
         const params = new HttpParams()
-            .set('values', JSON.stringify(userId));
+            .set('values', JSON.stringify(userId))
+            .set('values', JSON.stringify(status));
 
-        // todo: add token to url
-        return this.http.get<BaseResponse>(`${this.appState.baseUrl}/users/ban`, { params }).pipe(
+        return this.http.get<BaseResponse>(`${this.appState.baseUrl}/administration/change-access/${this.appState.userToken}`, { params }).pipe(
             catchError(HandleError<BaseResponse>('Banning user')),
-        );
-    }
-
-    unbanUser(userId: number) {
-
-        const params = new HttpParams()
-            .set('values', JSON.stringify(userId));
-
-        // todo: add token to url
-        return this.http.get<BaseResponse>(`${this.appState.baseUrl}/users/unban`, { params }).pipe(
-            catchError(HandleError<BaseResponse>('Unbanning user')),
         );
     }
 }
