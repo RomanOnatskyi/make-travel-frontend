@@ -15,7 +15,7 @@
                         </div>
 
                         <div class="hotel-order-tt">
-                            {{ order.category }}
+                            {{ categories[order.category] }}
                         </div>
                     </div>
 
@@ -75,7 +75,7 @@
 
             <div class="status">
                 <div class="status-text">
-                    {{ order.status }}
+                    {{ statuses[order.status] }}
                 </div>
             </div>
         </div>

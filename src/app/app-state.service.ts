@@ -19,11 +19,11 @@ export class AppState {
 
 export enum UserRole {
 
-    Unauthorized = "Unauthorized",
-    Client = "Client",
-    Employee = "Employee",
-    HotelAdmin = "HotelAdmin",
-    SystemAdmin = "SystemAdmin",
+    Unauthorized ,
+    Client ,
+    Employee ,
+    HotelAdmin ,
+    SystemAdmin ,
 }
 
 export enum ServiceCategory {
@@ -32,4 +32,12 @@ export enum ServiceCategory {
     Food,
     Entertainment,
     Repairing,
+}
+
+export enum OrderStatus {
+
+    Registered,
+    Accepted,
+    Finished,
+    Declined,
 }

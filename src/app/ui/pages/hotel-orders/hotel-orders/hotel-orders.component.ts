@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HotelOrdersService } from '../hotel-orders.service';
 import { HotelOrder } from '../../../../responses/hotel-orders-response';
+import { OrderStatus, ServiceCategory } from '../../../../app-state.service';
 
 @Component({
     selector: 'app-hotel-orders',
@@ -19,6 +20,20 @@ export class HotelOrdersComponent implements OnInit {
     }
 
     hotelOrders: HotelOrder[];
+
+    statuses = {
+        [OrderStatus.Registered]: "Зарегистрирован",
+        [OrderStatus.Accepted]: "Принят",
+        [OrderStatus.Finished]: "Завершен",
+        [OrderStatus.Declined]: "Отменен",
+    };
+
+    categories = {
+        [ServiceCategory.Cleaning]: "Уборка",
+        [ServiceCategory.Food]: "Еда",
+        [ServiceCategory.Entertainment]: "Развлечения",
+        [ServiceCategory.Repairing]: "Ремонт",
+    };
 
     private getHotelOrders() {
 

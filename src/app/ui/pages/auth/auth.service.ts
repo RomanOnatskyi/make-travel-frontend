@@ -25,7 +25,7 @@ export class AuthService {
         // return this.http.post<AuthResponse>(`http://localhost:3000/posts`, user).pipe(
 
         const params = new HttpParams().set('values', JSON.stringify(user));
-        return this.http.get<AuthResponse>(`${this.appState.baseUrl}/users/register`, { params }).pipe(
+        return this.http.get<AuthResponse>('http://localhost:8080/maketravel/users/register', { params }).pipe(
             catchError(HandleError<AuthResponse>('Signing up')),
         );
     }
@@ -36,14 +36,14 @@ export class AuthService {
         // return this.http.post<AuthResponse>(`http://localhost:3000/posts`, user).pipe(
 
         const params = new HttpParams().set('values', JSON.stringify(user));
-        return this.http.get<AuthResponse>(`${this.appState.baseUrl}/users/login`, { params }).pipe(
+        return this.http.get<AuthResponse>('http://localhost:8080/maketravel/users/login', { params }).pipe(
             catchError(HandleError<AuthResponse>('Signing in')),
         );
     }
 
     getCaptchaId() {
 
-        return this.http.get<CaptchaResponse>(`${this.appState.baseUrl}/captcha/id`).pipe(
+        return this.http.get<CaptchaResponse>('http://localhost:8080/maketravel/captcha/id').pipe(
             catchError(HandleError<CaptchaResponse>('Getting captcha')),
         );
     }

@@ -4,12 +4,29 @@
             <a>Главная</a>
         </button>
 
-        <button class="main-menu-button" routerLink="/services">
+        <button *ngIf="currentUser == UserRole.Client"
+            class="main-menu-button" routerLink="/services">
             <a>Услуги</a>
         </button>
 
-        <button class="main-menu-button" routerLink="">
+        <button *ngIf="currentUser == UserRole.Client"
+            class="main-menu-button" routerLink="">
             <a>Мои отели</a>
+        </button>
+
+        <button *ngIf="currentUser == UserRole.HotelAdmin"
+            class="main-menu-button" routerLink="/create-service">
+            <a>Новая услуга</a>
+        </button>
+
+        <button *ngIf="currentUser == UserRole.HotelAdmin"
+            class="main-menu-button" routerLink="/hotel-orders">
+            <a>Заказы</a>
+        </button>
+
+        <button *ngIf="currentUser == UserRole.HotelAdmin"
+            class="main-menu-button" routerLink="/user-list">
+            <a>Клиенты</a>
         </button>
 
         <button class="main-menu-button" routerLink="">
@@ -19,35 +36,27 @@
         <button class="main-menu-button" routerLink="">
             <a>How to</a>
         </button>
-
-
-<!--        <button *ngIf="currentUser == UserRole.HotelAdmin"-->
-        <button
-            class="main-menu-button" routerLink="/create-service">
-            <a>Create Service TEMP</a>
-        </button>
-
-
-        <button class="main-menu-button" routerLink="/hotel-orders">
-            <a>Hotel Orders TEMP</a>
-        </button>
-
-
-        <button class="main-menu-button" routerLink="/user-list">
-            <a>User list TEMP</a>
-        </button>
     </div>
 
 
     <div *ngIf="currentUser == UserRole.Unauthorized"
          class="profile-section">
-        <button class="authorization-menu-button"><a class="authorization-items" routerLink="/auth/sign-up">Регистрация</a></button>
-        <button class="authorization-menu-button"><a class="authorization-items" routerLink="/auth/sign-in">Вход</a></button>
+
+        <button class="authorization-menu-button" routerLink="/auth/sign-up">
+            <a class="authorization-items">Регистрация</a>
+        </button>
+
+        <button class="authorization-menu-button" routerLink="/auth/sign-in">
+            <a class="authorization-items">Вход</a>
+        </button>
     </div>
 
     <div *ngIf="currentUser != UserRole.Unauthorized"
          class="profile-section">
-        <button class="authorization-menu-button"><a class="authorization-items" routerLink="/profile">Профиль</a></button>
+
+        <button class="authorization-menu-button" routerLink="/profile">
+            <a class="authorization-items">Профиль</a>
+        </button>
     </div>
 
 </div>
