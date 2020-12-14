@@ -11,6 +11,7 @@ import { MainMenuModule } from './ui/main-menu/main-menu.module';
 import { ServicesModule } from './ui/pages/services/services.module';
 import { CreateServiceModule } from './ui/pages/create-service/create-service.module';
 import { HotelOrdersModule } from './ui/pages/hotel-orders/hotel-orders.module';
+import { UserListModule } from './ui/pages/user-list/user-list.module';
 
 @NgModule({
     declarations: [
@@ -27,6 +28,7 @@ import { HotelOrdersModule } from './ui/pages/hotel-orders/hotel-orders.module';
         ServicesModule,
         CreateServiceModule,
         HotelOrdersModule,
+        UserListModule,
     ],
     providers: [],
     bootstrap: [AppComponent],
