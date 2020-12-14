@@ -10,6 +10,7 @@ import { AuthModule } from './ui/pages/auth/auth.module';
 import { MainMenuModule } from './ui/main-menu/main-menu.module';
 import { ServicesModule } from './ui/pages/services/services.module';
 import { CreateServiceModule } from './ui/pages/create-service/create-service.module';
+import { HotelOrdersModule } from './ui/pages/hotel-orders/hotel-orders.module';
 
 @NgModule({
     declarations: [
@@ -25,6 +26,7 @@ import { CreateServiceModule } from './ui/pages/create-service/create-service.mo
         MainMenuModule,
         ServicesModule,
         CreateServiceModule,
+        HotelOrdersModule,
     ],
     providers: [],
     bootstrap: [AppComponent],

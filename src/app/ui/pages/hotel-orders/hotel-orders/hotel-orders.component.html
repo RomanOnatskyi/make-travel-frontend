@@ -1,0 +1,83 @@
+<div class="page-content">
+    <div class="hotel-order-content">
+        <div class="hotel-orders-header base-container">
+            Заказы отеля
+        </div>
+
+        <div *ngFor="let order of hotelOrders"
+            class="hotel-order-form-section base-container">
+
+            <div class="hotel-order-con-text">
+                <div class="hotel-order-con-1">
+                    <div class="hotel-order-text">
+                        <div class="hotel-order-zak">
+                            Категория заказа:
+                        </div>
+
+                        <div class="hotel-order-tt">
+                            {{ order.category }}
+                        </div>
+                    </div>
+
+                    <div class="hotel-order-text">
+                        <div class="hotel-order-id-zak">
+                            Id заказа:
+                        </div>
+
+                        <div class="hotel-order-tt">
+                            {{ order.orderId }}
+                        </div>
+                    </div>
+
+                    <div class="hotel-order-text">
+                        <div class="hotel-order-id-zaka">
+                            Id заказчика:
+                        </div>
+
+                        <div class="hotel-order-tt">
+                            {{ order.userId }}
+                        </div>
+                    </div>
+                </div>
+
+                <div class="hotel-order-con-2">
+                    <div class="hotel-order-text">
+                        <div class="hotel-order-nam">
+                            Название услуги:
+                        </div>
+
+                        <div class="hotel-order-tt">
+                            {{ order.orderName }}
+                        </div>
+                    </div>
+
+                    <div class="hotel-order-text">
+                        <div class="hotel-order-date-sos">
+                            Время составления заказа:
+                        </div>
+
+                        <div class="hotel-order-tt">
+                            {{ order.makingOrderDate }}
+                        </div>
+                    </div>
+
+                    <div class="hotel-order-text">
+                        <div class="hotel-order-date">
+                            Время, на которое закано:
+                        </div>
+
+                        <div class="hotel-order-tt">
+                            {{ order.orderDate }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="status">
+                <div class="status-text">
+                    {{ order.status }}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
