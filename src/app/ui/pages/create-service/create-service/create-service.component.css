@@ -1,0 +1,101 @@
+input {
+    border: none;
+    border-radius: 4px;
+}
+
+textarea {
+    max-width: 99%;
+    min-width: 99%;
+}
+
+.service-creation-content {
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 auto;
+    background-color: #832736;
+    border-radius: 6px;
+    box-shadow: 0 2px 5px #000000;
+    width: 550px;
+    margin-top: 100px;
+}
+
+.service-creation-header {
+    display: flex;
+    flex-direction: row;
+    color: #FBECD8;
+    font-size: 16pt;
+    margin: 15px 0;
+}
+
+.service-creation-header hr {
+    width: 30%;
+    height: 2px;
+    background-color: #FBECD8;
+    border: none;
+    border-radius: 5px;
+}
+
+.errors {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: #FF0000;
+    padding: 10px;
+    margin: 0 70px 10px 70px;
+    border: #FBECD8 solid 1px;
+    border-radius: 6px;
+    text-align: left;
+    transition: 3s;
+}
+
+.errors-text {
+    color: #FFFFFF;
+}
+
+.errors-button {
+    height: 20px;
+    width: 60px;
+    margin-top: 10px;
+    color: #FBECD8;
+    background: none;
+    border: #FBECD8 solid 1px;
+    border-radius: 7px;
+}
+
+.service-creation-form {
+    color: #FFFFFF;
+    padding: 0 70px;
+}
+
+.service-creation-form-item {
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+}
+
+.service-creation-form-submit-item {
+    display: flex;
+    justify-content: flex-end;
+    margin: 40px 0 20px 0;
+}
+
+.service-creation-form-submit-item button {
+    height: 30px;
+    color: #FBECD8;
+    background: none;
+    border: #FBECD8 solid 1px;
+    border-radius: 7px;
+    cursor: pointer;
+    min-width: 70px;
+}
+
+.service-creation-form-submit-item button:disabled {
+    color: #7C7979;
+    border: #7C7979 solid 1px;
+    cursor: default;
+}
+
+.validation-warning {
+    color: #FF0000;
+    margin-top: 5px;
+}
