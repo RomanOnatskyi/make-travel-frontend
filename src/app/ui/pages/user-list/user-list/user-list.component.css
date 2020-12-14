@@ -36,6 +36,7 @@
 .user-con-text {
     display: flex;
     flex-direction: row;
+    justify-content: space-around;
 }
 
 .user-name, .user-email, .user-passport, .user-login {
@@ -46,12 +47,10 @@
 }
 
 .user-con-1 {
-    margin-left: 70px;
     line-height: 30px;
 }
 
 .user-con-2 {
-    margin-left: 40%;
     line-height: 30px;
 }
 

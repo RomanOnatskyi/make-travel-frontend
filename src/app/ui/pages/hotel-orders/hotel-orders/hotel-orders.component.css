@@ -1,4 +1,4 @@
-.page-content {
+.page-content1 {
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -7,7 +7,7 @@
     width: 100%;
 }
 
-.base-container {
+.base-container1 {
     background-color: #832736;
     border-radius: 6px;
     box-shadow: 0 2px 5px #000000;
@@ -20,17 +20,22 @@
     margin-bottom: 10px;
     color: #FBECD8;
     font-size: 18pt;
+    flex-shrink: 0;
+
 }
 
 .hotel-order-content {
     color: white;
     padding: 15px;
-    min-width: 1250px;
+    /*min-width: 1250px;*/
+    width: 60%;
+    flex-shrink: 0;
 }
 
 .hotel-order-con-text {
     display: flex;
     flex-direction: row;
+    justify-content: space-between;
 }
 
 
@@ -44,7 +49,6 @@
 }
 
 .hotel-order-con-1 {
-    margin-left: 70px;
     line-height: 30px;
 }
 

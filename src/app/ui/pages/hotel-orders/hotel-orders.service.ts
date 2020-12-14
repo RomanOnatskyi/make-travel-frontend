@@ -20,7 +20,7 @@ export class HotelOrdersService {
 
     getHotelOrders() {
 
-        // return this.http.get<UserHotelResponse>(`http://localhost:3000/hotels`).pipe(
+        // return this.http.get<HotelOrdersResponse>(`http://localhost:3000/hotel-orders`).pipe(
         return this.http.get<HotelOrdersResponse>(`${this.appState.baseUrl}/hotels/getOrders/${this.appState.userToken}`).pipe(
             catchError(HandleError<HotelOrdersResponse>('Getting hotel orders')),
         );

@@ -38,7 +38,7 @@ export class UserListComponent implements OnInit {
 
     async banUser(userId: number) {
 
-        const willBeBanned = true;
+        const willBeBanned = 1;
 
         this.userListService.changeUserAccess(userId, willBeBanned)
             .subscribe(response => this.showError([ response.errors ]));
@@ -48,7 +48,7 @@ export class UserListComponent implements OnInit {
 
     async unbanUser(userId: number) {
 
-        const willBeBanned = true;
+        const willBeBanned = 0;
 
         this.userListService.changeUserAccess(userId, willBeBanned)
             .subscribe(response => this.showError([ response.errors ]));

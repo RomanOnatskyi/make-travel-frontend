@@ -55,7 +55,7 @@
             </div>
 
             <div class="bt">
-                <button *ngIf="!user.isBanned"
+                <button *ngIf="user.isBanned"
                     (click)="unbanUser(user.id)"
                     class="user-uban">
                     Разбанить

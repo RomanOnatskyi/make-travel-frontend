@@ -14,9 +14,9 @@ export class HotelOrdersComponent implements OnInit {
         private hotelOrdersService: HotelOrdersService,
     ) {}
 
-    ngOnInit(): void {
+    async ngOnInit() {
 
-        this.hotelOrders = this.getHotelOrders();
+        this.hotelOrders = await this.getHotelOrders();
     }
 
     hotelOrders: HotelOrder[];
@@ -35,19 +35,15 @@ export class HotelOrdersComponent implements OnInit {
         [ServiceCategory.Repairing]: "Ремонт",
     };
 
-    private getHotelOrders() {
+    private async getHotelOrders() {
 
-        let orders = [];
+        const ordersResponse = await this.hotelOrdersService.getHotelOrders().toPromise();
 
-        this.hotelOrdersService.getHotelOrders()
-            .subscribe(response => {
+        const error = [ ordersResponse.errors ];
 
-                this.showError([response.errors]);
+        this.showError(error);
 
-                orders = response.hotelList;
-            });
-
-        return orders;
+        return ordersResponse.hotelList;
     }
 
     private showError(errors: string[]) {
