@@ -40,8 +40,9 @@ export class UserListComponent implements OnInit {
 
         const willBeBanned = 1;
 
-        this.userListService.changeUserAccess(userId, willBeBanned)
-            .subscribe(response => this.showError([ response.errors ]));
+        const response = await this.userListService.changeUserAccess(userId, willBeBanned).toPromise();
+
+        this.showError([ response.errors ]);
 
         this.users = await this.getAllUsers();
     }
@@ -50,8 +51,9 @@ export class UserListComponent implements OnInit {
 
         const willBeBanned = 0;
 
-        this.userListService.changeUserAccess(userId, willBeBanned)
-            .subscribe(response => this.showError([ response.errors ]));
+        const response = await this.userListService.changeUserAccess(userId, willBeBanned).toPromise();
+
+        this.showError([ response.errors ]);
 
         this.users = await this.getAllUsers();
     }

@@ -5,6 +5,8 @@ export class HotelService {
     name: string;
     description: string;
     price: number;
+    delayAcceptance?: number;
+    delayFinish?: number;
     orderId?: number;
     orderDate?: string;
 }
@@ -12,5 +14,3 @@ export class HotelService {
 export class HotelServiceResponse extends BaseResponse {
     serviceList: HotelService[];
 }
-
-

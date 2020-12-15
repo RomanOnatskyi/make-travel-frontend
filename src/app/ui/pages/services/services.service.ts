@@ -47,20 +47,19 @@ export class ServicesService {
 
     sendOrder(order: Order) {
 
+        order.userLogin = this.appState.userToken;
+
         const params = new HttpParams()
             .set('values', JSON.stringify(order));
 
-        return this.http.get<BaseResponse>(`${this.appState.baseUrl}/order/${this.appState.userToken}`, { params }).pipe(
+        return this.http.get<BaseResponse>(`${this.appState.baseUrl}/order/create/${this.appState.userToken}`, { params }).pipe(
             catchError(HandleError<BaseResponse>('Making order')),
         );
     }
 
     cancelOrder(orderId: number) {
 
-        const params = new HttpParams()
-            .set('values', orderId.toString());
-
-        return this.http.get<BaseResponse>(`${this.appState.baseUrl}/order/decline/${this.appState.userToken}`, { params }).pipe(
+        return this.http.get<BaseResponse>(`${this.appState.baseUrl}/order/decline-order/${orderId}/${this.appState.userToken}`).pipe(
             catchError(HandleError<BaseResponse>('Declining order')),
         );
     }

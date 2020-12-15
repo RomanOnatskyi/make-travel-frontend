@@ -171,6 +171,10 @@
     font-size: 14pt;
 }
 
+.logic {
+    margin-top: 10px;
+}
+
 .service-price {
     display: flex;
     flex-direction: row;

@@ -79,6 +79,18 @@
                             </div>
 
                             <div>{{ service.description }}</div>
+
+                            <div *ngIf="service.delayAcceptance"
+                                class="logic">
+
+                                Время до принятия: {{ service.delayAcceptance }}
+                            </div>
+
+                            <div *ngIf="service.delayAcceptance"
+                                class="logic">
+
+                                Время выполнения: {{ service.delayFinish }}
+                            </div>
                         </div>
 
                         <div class="service-price">
