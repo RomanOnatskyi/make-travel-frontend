@@ -12,6 +12,7 @@ import { ServicesModule } from './ui/pages/services/services.module';
 import { CreateServiceModule } from './ui/pages/create-service/create-service.module';
 import { HotelOrdersModule } from './ui/pages/hotel-orders/hotel-orders.module';
 import { UserListModule } from './ui/pages/user-list/user-list.module';
+import { MyHotelsModule } from './ui/pages/my-hotels/my-hotels.module';
 
 @NgModule({
     declarations: [
@@ -29,6 +30,7 @@ import { UserListModule } from './ui/pages/user-list/user-list.module';
         CreateServiceModule,
         HotelOrdersModule,
         UserListModule,
+        MyHotelsModule,
     ],
     providers: [],
     bootstrap: [AppComponent],
