@@ -1,0 +1,236 @@
+.page-content {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-top: 100px;
+    height: 50%;
+    width: 100%;
+}
+
+.base-container {
+    background-color: #832736;
+    border-radius: 6px;
+    box-shadow: 0 2px 5px #000000;
+}
+
+.hotels-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100%;
+    width: 15%;
+    min-width: 180px;
+    color: #FFFFFF;
+    padding-bottom: 10px;
+}
+
+.hotels-section-header {
+    font-size: 14pt;
+    padding: 10px;
+}
+
+.hotels-list {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.hotels-list-button {
+    background: none;
+    color: #FFFFFF;
+    font-size: 12pt;
+    min-width: 100px;
+    min-height: 50px;
+    padding: 10px;
+    cursor: pointer;
+
+}
+
+.hotels-list-button:hover {
+    color: #FBECD8;
+}
+
+.activeHotel {
+    background-color: #FBECD8;
+    color: #832736;
+    pointer-events: none;
+}
+
+.categories {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    height: 30px;
+    margin-bottom: 10px;
+    padding: 0 10px;
+}
+
+.category-button {
+    background: none;
+    color: #FFFFFF;
+    font-size: 12pt;
+    min-width: 100px;
+    flex-basis: 200px;
+    cursor: pointer;
+}
+
+.category-button:hover {
+    color: #FBECD8;
+    font-weight: bold;
+}
+
+.activeCategory {
+    background-color: #FBECD8;
+    color: #832736;
+    font-weight: bold;
+    pointer-events: none;
+}
+
+.services-section {
+    display: flex;
+    flex-direction: column;
+    margin-left: 10px;
+    width: 70%;
+}
+
+.services-list {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    max-width: 100%;
+}
+
+.services-list-item {
+    display: flex;
+    flex-direction: row;
+    width: calc(50% - 5px);
+    margin-top: 5px;
+    padding: 0;
+    color: #FFFFFF;
+}
+
+@media (max-width: 1200px) {
+    .services-list-item {
+        width: 100%;
+    }
+}
+
+.service-content {
+    padding: 15px;
+    display: flex;
+    flex-direction: row;
+    flex: 1 1 auto;
+    flex-wrap: nowrap;
+}
+
+.service-image-and-form-section {
+    display: flex;
+    flex-direction: column;
+    flex-shrink: 1;
+    word-break: break-all;
+}
+
+.service-details-section {
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 auto;
+    justify-content: space-between;
+    word-break: break-word;
+    margin-left: 10px;
+}
+
+.service-img {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.service-img img {
+    width: 150px;
+    height: 150px;
+}
+
+.service-name {
+    display: flex;
+    justify-content: center;
+    font-size: 25px;
+    color: #FBECD8;
+    font-weight: bold;
+}
+
+.service-description {
+    display: flex;
+    flex-direction: column;
+    flex-shrink: 1;
+    padding-left: 20px;
+    font-size: 20px;
+}
+
+.service-text {
+    color: #FBECD8;
+    font-size: 14pt;
+}
+
+.logic {
+    margin-top: 10px;
+}
+
+.service-price {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    flex-shrink: 1;
+    padding-left: 20px;
+    margin-top: 20px;
+    font-size: 14pt;
+}
+
+.service-form-submit-button {
+    padding-top: 10px;
+}
+
+.service-form-submit-button button {
+    border: 1px solid #fbecd8;
+    border-radius: 5px;
+    background: #832736;
+    width: 100%;
+    height: 30px;
+    font-size: 15px;
+    color: #FBECD8;
+    cursor: pointer;
+}
+
+.service-form-submit-button button:hover {
+    background: #FBECD8;
+    color: #832736;
+}
+
+.service-form-submit-button button:disabled {
+    color: #7C7979;
+    border: #7C7979 solid 1px;
+    pointer-events: none;
+}
+
+.service-form-submit-button a {
+    text-decoration: none;
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.service-input-text {
+    margin-top: 20px;
+    font-size: 20px;
+    color: #FBECD8;
+    text-align: center;
+}
+
+.service-input {
+    padding-top: 10px;
+}
+
+.service-input input {
+    width: 175px;
+    height: 25px;
+    border-radius: 3px;
+}
