@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UserHotel } from '../../../../responses/user-hotel-response';
 import { Feedback } from '../feedback';
-import { MyHotelsService } from '../my-hotels';
+import { MyHotelsService } from '../my-hotels.service';
 
 @Component({
     selector: 'app-my-hotels',

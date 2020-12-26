@@ -4,7 +4,6 @@ import { AppStateService } from '../../../app-state.service';
 import { catchError } from 'rxjs/operators';
 import { HandleError } from '../../../handle-error';
 import { UserHotelResponse } from '../../../responses/user-hotel-response';
-import { HotelServiceResponse } from '../../../responses/hotel-service-response';
 import { BaseResponse } from '../../../responses/base-response';
 import { Feedback } from './feedback';
 
