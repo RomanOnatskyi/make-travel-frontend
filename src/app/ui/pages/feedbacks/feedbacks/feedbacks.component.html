@@ -1,6 +1,8 @@
 <div class="page-content">
     <div class="hotels-section base-container">
-        <div class="hotels-section-header">Отель</div>
+        <div class="hotels-section-header">
+            Отель
+        </div>
 
         <div class="hotels-list">
             <button *ngFor="let hotel of hotels"
@@ -13,85 +15,26 @@
         </div>
     </div>
 
-    <div class="services-section">
-        <div class="categories base-container">
+    <div class="feedbacks-section">
+        <div class="feedbacks-header base-container">
             <div>
                 Отзывы
             </div>
         </div>
 
-        <div class="services-list">
-            <div *ngFor="let service of hotelFeedbacks"
-                class="services-list-item base-container">
+        <div class="feedbacks-list">
+            <div *ngFor="let feedback of hotelFeedbacks"
+                class="feedbacks-list-item base-container">
 
-                <div class="service-content">
-                    <div class="service-image-and-form-section">
-                        <div class="service-img">
-                            <img src="assets/img/hotel-service-icons/{{ getCategoryImageName() }}.png" alt="">
-                        </div>
+                <div class="feedbacks-content">
+                     <div class="feedbacks-details-section">
 
-                        <form>
-                            <label class="service-input-text" for="localDate">
-                                Укажите дату:
-                            </label>
-
-                            <div class="service-input">
-                                <input type="datetime-local"
-                                    id="localDate"
-                                    name="datetime"
-                                    [disabled]="service.orderId"
-                                    [(ngModel)]="service.orderDate ? service.orderDate : order.date">
+                        <div class="feedback-description">
+                            <div class="feedback-author">
+                                {{ feedback.userLogin }}:
                             </div>
 
-                            <div>
-                                <div class="service-form-submit-button">
-                                    <button type="submit"
-                                        [disabled]="service.orderId"
-                                        (click)="makeOrder(service.id)">
-
-                                        <span>{{ service.orderId ? 'Заказано' : 'Заказать' }}</span>
-                                    </button>
-                                </div>
-
-                                <div *ngIf="service.orderId"
-                                    class="service-form-submit-button">
-
-                                    <button type="submit"
-                                        (click)="cancelOrder(service.orderId)">
-                                        Отменить заказ
-                                    </button>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-
-                    <div class="service-details-section">
-
-                        <div class="service-description">
-                            <div class="service-name"> {{ service.name }} </div>
-
-                            <div class="service-text">
-                                Описание:
-                            </div>
-
-                            <div>{{ service.description }}</div>
-
-                            <div *ngIf="service.delayAcceptance"
-                                class="logic">
-
-                                Время до принятия: {{ service.delayAcceptance }}
-                            </div>
-
-                            <div *ngIf="service.delayAcceptance"
-                                class="logic">
-
-                                Время выполнения: {{ service.delayFinish }}
-                            </div>
-                        </div>
-
-                        <div class="service-price">
-                            <div class="service-text">Цена:&nbsp;</div>
-                            <div>{{ service.price }} грн</div>
+                            <div>{{ feedback.text }}</div>
                         </div>
                     </div>
                 </div>

@@ -1,11 +1,10 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { AppStateService } from '../../../app-state.service';
+import { UserHotelResponse } from '../../../responses/user-hotel-response';
+import { HotelFeedbackResponse } from '../../../responses/hotel-feedbacks-response';
 import { catchError } from 'rxjs/operators';
 import { HandleError } from '../../../handle-error';
-import { UserHotelResponse } from '../../../responses/user-hotel-response';
-import { HotelServiceResponse } from '../../../responses/hotel-service-response';
-import { HotelFeedbackResponse } from '../../../responses/hotel-feedbacks-response';
 
 @Injectable({
     providedIn: 'root',
@@ -22,7 +21,7 @@ export class FeedbacksService {
 
     getAllHotels() {
 
-        // return this.http.get<UserHotelResponse>(`http://localhost:3000/hotels`).pipe(
+        // return this.http.get<UserHotelResponse>(`http://localhost:3000/all-hotels`).pipe(
         return this.http.get<UserHotelResponse>(`${this.appState.baseUrl}/hotels/getHotels/${this.appState.userToken}`).pipe(
             catchError(HandleError<UserHotelResponse>('Getting hotels info')),
         );
@@ -30,7 +29,7 @@ export class FeedbacksService {
 
     getFeedbacksByHotelId(hotelId: number) {
 
-        // return this.http.get<HotelServiceResponse>(`http://localhost:3000/services`).pipe(
+        // return this.http.get<HotelFeedbackResponse>(`http://localhost:3000/hotel-feedbacks`).pipe(
         return this.http.get<HotelFeedbackResponse>(`${this.appState.baseUrl}/services/forHotel/${hotelId}/${this.appState.userToken}`).pipe(
             catchError(HandleError<HotelFeedbackResponse>('Getting feedbacks')),
         );
