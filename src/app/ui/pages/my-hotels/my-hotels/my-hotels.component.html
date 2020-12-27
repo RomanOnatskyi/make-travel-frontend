@@ -5,31 +5,44 @@
             Ваши отели:
         </div>
 
-        <div class="hotel-form-section base-container">
+        <div *ngFor="let hotel of userHotels"
+            class="hotel-form-section base-container">
+
             <div class="hotel-con-1">
                 <div class="hotel-form">
                     <div class="hotel-text">
-                        Название отеля!
+                        {{ hotel.name }}
                     </div>
 
                     <div class="form-button">
                         <button class="Textarea-but">
-                            Оставить отзыв!
+                            Оставить отзыв
                         </button>
                     </div>
                 </div>
 
-                <form class="form-inner">
+                <form #form="ngForm"
+                    class="form-inner">
+
                     <div class="Textarea-Header">
                         Оставить отзыв:
                     </div>
 
                     <div class="Textarea">
-                        <textarea cols="20" name="text" placeholder="Напишите ваш отзыв!"></textarea>
+                        <textarea
+                            #name="ngModel"
+                            id="feedback"
+                            cols="20"
+                            name="text"
+                            placeholder="Напишите ваш отзыв!"
+                            [(ngModel)]="feedback.text">
+                        </textarea>
                     </div>
 
                     <div class="submit-button">
-                        <button type="submit" class="Textarea-but">Отправить</button>
+                        <button type="submit"
+                            class="Textarea-but"
+                        (click)="leaveFeedback(hotel.id)">Отправить</button>
                     </div>
                 </form>
             </div>

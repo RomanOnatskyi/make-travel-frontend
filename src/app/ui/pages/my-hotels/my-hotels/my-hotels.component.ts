@@ -33,9 +33,7 @@ export class MyHotelsComponent implements OnInit {
         return userHotelsResponse.hotelList;
     }
 
-    private leaveFeedback(hotelId: number) {
-
-        // todo связать форму с объектом фидбэка
+    leaveFeedback(hotelId: number) {
 
         this.feedback.hotelId = hotelId;
 
