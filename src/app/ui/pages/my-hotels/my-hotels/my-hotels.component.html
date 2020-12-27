@@ -13,15 +13,10 @@
                     <div class="hotel-text">
                         {{ hotel.name }}
                     </div>
-
-                    <div class="form-button">
-                        <button class="Textarea-but">
-                            Оставить отзыв
-                        </button>
-                    </div>
                 </div>
 
-                <form #form="ngForm"
+                <form
+                    #form="ngForm"
                     class="form-inner">
 
                     <div class="Textarea-Header">
@@ -42,7 +37,10 @@
                     <div class="submit-button">
                         <button type="submit"
                             class="Textarea-but"
-                        (click)="leaveFeedback(hotel.id)">Отправить</button>
+                            (click)="leaveFeedback(hotel.id)">
+
+                            Отправить
+                        </button>
                     </div>
                 </form>
             </div>
