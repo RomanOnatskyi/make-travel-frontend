@@ -4,7 +4,7 @@
     justify-content: center;
     margin-top: 100px;
     height: 50%;
-    width: 100%;
+    width: 700px;
 }
 
 .base-container {
@@ -23,42 +23,40 @@
 }
 
 .hotel-form-section {
-    margin: 10px;
-    padding: 20px 20px 20px 0;
+    padding: 10px;
+    margin-bottom: 15px;
 }
 
 .hotel-content {
     color: white;
-    padding: 15px;
-    min-width: 650px;
-}
-
-.hotel-con-text {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-}
-
-.form-inner Textarea{
-    display: block;
     width: 100%;
-    padding: 0 20px;
-    margin-bottom: 10px;
-    background: #E9EFF6;
-    font-family: 'Roboto', sans-serif;
-    resize: none;
 }
 
-.Textarea-Header{
+.Textarea {
+    display: flex;
+    flex-grow: 0;
+    width: 100%;
+    margin-bottom: 10px;
+    font-family: 'Roboto', sans-serif;
+}
+
+.Textarea textarea {
+    max-width: 99%;
+    min-width: 99%;
+}
+
+.Textarea-Header {
     font-size: 20px;
     margin-bottom: 10px;
 }
 
 .hotel-con-1 {
-    line-height: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
-.hotel-text{
+.hotel-text {
     text-align: center;
     font-size: 25px;
     color: #FBECD8;
@@ -66,24 +64,23 @@
     margin-top: 10px;
 }
 
-.form-button{
+.form-button {
+    display: flex;
+    justify-content: center;
     margin-bottom: 15px;
 }
 
-.Textarea-button {
-    margin-left: 20px;
-    margin-bottom: 10px;
-}
-
-.Textarea-button button {
-    margin-top: 10px;
+.submit-button {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 15px;
 }
 
 .Textarea-but {
     border: 1px solid #fbecd8;
     border-radius: 5px;
     background: #832736;
-    width: 100%;
+    width: 250px;
     height: 30px;
     font-size: 15px;
     color: #FBECD8;
