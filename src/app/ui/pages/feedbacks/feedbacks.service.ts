@@ -30,7 +30,7 @@ export class FeedbacksService {
     getFeedbacksByHotelId(hotelId: number) {
 
         // return this.http.get<HotelFeedbackResponse>(`http://localhost:3000/hotel-feedbacks`).pipe(
-        return this.http.get<HotelFeedbackResponse>(`${this.appState.baseUrl}/services/forHotel/${hotelId}/${this.appState.userToken}`).pipe(
+        return this.http.get<HotelFeedbackResponse>(`${this.appState.baseUrl}hotel/feeds/${hotelId}/${this.appState.userToken}`).pipe(
             catchError(HandleError<HotelFeedbackResponse>('Getting feedbacks')),
         );
     }
