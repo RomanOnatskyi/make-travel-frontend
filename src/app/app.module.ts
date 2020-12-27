@@ -13,6 +13,7 @@ import { CreateServiceModule } from './ui/pages/create-service/create-service.mo
 import { HotelOrdersModule } from './ui/pages/hotel-orders/hotel-orders.module';
 import { UserListModule } from './ui/pages/user-list/user-list.module';
 import { FeedbacksModule } from './ui/pages/feedbacks/feedbacks.module';
+import { MyHotelsModule } from './ui/pages/my-hotels/my-hotels.module';
 
 @NgModule({
     declarations: [
@@ -31,6 +32,7 @@ import { FeedbacksModule } from './ui/pages/feedbacks/feedbacks.module';
         HotelOrdersModule,
         UserListModule,
         FeedbacksModule,
+        MyHotelsModule,
     ],
     providers: [],
     bootstrap: [AppComponent],

@@ -1,0 +1,49 @@
+<div class="hotel-list-content">
+    <div class="hotel-content">
+
+        <div class="hotel-list-header base-container">
+            Ваши отели:
+        </div>
+
+        <div *ngFor="let hotel of userHotels"
+            class="hotel-form-section base-container">
+
+            <div class="hotel-con-1">
+                <div class="hotel-form">
+                    <div class="hotel-text">
+                        {{ hotel.name }}
+                    </div>
+                </div>
+
+                <form
+                    #form="ngForm"
+                    class="form-inner">
+
+                    <div class="Textarea-Header">
+                        Оставить отзыв:
+                    </div>
+
+                    <div class="Textarea">
+                        <textarea
+                            #name="ngModel"
+                            id="feedback"
+                            cols="20"
+                            name="text"
+                            placeholder="Напишите ваш отзыв!"
+                            [(ngModel)]="feedback.text">
+                        </textarea>
+                    </div>
+
+                    <div class="submit-button">
+                        <button type="submit"
+                            class="Textarea-but"
+                            (click)="leaveFeedback(hotel.id)">
+
+                            Отправить
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

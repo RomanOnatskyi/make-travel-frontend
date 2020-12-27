@@ -8,6 +8,7 @@ import { CreateServiceComponent } from './ui/pages/create-service/create-service
 import { HotelOrdersComponent } from './ui/pages/hotel-orders/hotel-orders/hotel-orders.component';
 import { UserListComponent } from './ui/pages/user-list/user-list/user-list.component';
 import { FeedbacksComponent } from './ui/pages/feedbacks/feedbacks/feedbacks.component';
+import { MyHotelsComponent } from './ui/pages/my-hotels/my-hotels/my-hotels.component';
 
 const routes: Routes = [
     { path: '', redirectTo: '/main', pathMatch: 'full' },
@@ -19,6 +20,7 @@ const routes: Routes = [
     { path: 'hotel-orders', component: HotelOrdersComponent },
     { path: 'user-list', component: UserListComponent },
     { path: 'feedbacks', component: FeedbacksComponent },
+    { path: 'my-hotels', component: MyHotelsComponent },
 ];
 
 @NgModule({
