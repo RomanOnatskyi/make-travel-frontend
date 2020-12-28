@@ -1,3 +1,4 @@
+import * as E from "linq";
 import { Component, OnInit } from '@angular/core';
 import { UserHotel } from '../../../../responses/user-hotel-response';
 import { Feedback } from '../feedback';
@@ -15,11 +16,15 @@ export class MyHotelsComponent implements OnInit {
     ) {}
 
     userHotels: UserHotel[];
-    feedback: Feedback = new Feedback();
 
     async ngOnInit() {
 
         this.userHotels = await this.getUserHotels();
+        E.from(this.userHotels)
+            .forEach(i => {
+
+                i.feedback = new Feedback();
+            });
     }
 
     private async getUserHotels() {
@@ -33,11 +38,11 @@ export class MyHotelsComponent implements OnInit {
         return userHotelsResponse.hotelList;
     }
 
-    leaveFeedback(hotelId: number) {
+    leaveFeedback(hotel: UserHotel) {
 
-        this.feedback.hotelId = hotelId;
+        hotel.feedback.hotelId = hotel.id;
 
-        this.myHotelsService.sendFeedback(this.feedback)
+        this.myHotelsService.sendFeedback(hotel.feedback)
             .subscribe(response => this.showError([ response.errors ]));
 
         alert("Ваш отзыв принят");

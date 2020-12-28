@@ -15,30 +15,25 @@
                     </div>
                 </div>
 
-                <form
-                    #form="ngForm"
-                    class="form-inner">
-
+                <form class="form-inner">
                     <div class="Textarea-Header">
                         Оставить отзыв:
                     </div>
 
                     <div class="Textarea">
                         <textarea
-                            #name="ngModel"
-                            id="feedback"
+                            [id]="'feedback_' + hotel.id"
+                            [name]="'feedback_text_' + hotel.id"
                             cols="20"
-                            name="text"
                             placeholder="Напишите ваш отзыв!"
-                            [(ngModel)]="feedback.text">
+                            [(ngModel)]="hotel.feedback.text">
                         </textarea>
                     </div>
 
                     <div class="submit-button">
                         <button type="submit"
                             class="Textarea-but"
-                            (click)="leaveFeedback(hotel.id)">
-
+                            (click)="leaveFeedback(hotel)">
                             Отправить
                         </button>
                     </div>
