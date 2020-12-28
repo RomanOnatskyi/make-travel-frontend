@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { AppStateService } from '../../../../app-state.service';
+import { AppStateService, Pages } from '../../../../app-state.service';
 import { AuthService } from '../auth.service';
 import { AuthResponse } from '../../../../responses/auth-response';
 import { SignInUser } from '../users';
@@ -28,6 +28,7 @@ export class SignInComponent {
     user = new SignInUser();
     processing: boolean = false;
     authError: string = null;
+    pages = Pages;
 
     submit() {
 
@@ -50,6 +51,7 @@ export class SignInComponent {
         this.appStateService.appState.userToken = response.token || '';
         this.appStateService.appState.currentUser = response.userRole;
 
+        this.appStateService.appState.currentPage = this.pages.Main;
         this.router.navigateByUrl('main');
     }
 }

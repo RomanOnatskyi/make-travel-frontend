@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { AppStateService } from '../../../../app-state.service';
+import { AppStateService, Pages } from '../../../../app-state.service';
 import { AuthService } from '../auth.service';
 import { AuthResponse } from '../../../../responses/auth-response';
 import { SignUpUser } from '../users';
@@ -44,6 +44,7 @@ export class SignUpComponent implements OnInit {
     processing: boolean = false;
     authError: string = null;
     captchaError: string = null;
+    pages = Pages;
 
     updateCaptcha() {
 
@@ -85,6 +86,7 @@ export class SignUpComponent implements OnInit {
             return;
         }
 
+        this.appStateService.appState.currentPage = this.pages.Authentication;
         this.router.navigateByUrl('auth/sign-in');
     }
 }
