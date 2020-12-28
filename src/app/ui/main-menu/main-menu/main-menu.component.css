@@ -76,10 +76,17 @@ a {
 }
 
 .authorization-menu-button:hover{
-    background: #3C070E;
+    background: #FBECD8;
     height: 50px;
 }
 
 .authorization-menu-button:hover a{
-    color: #FFE5B4;
+    color: #832736;
+    background: #FBECD8;
+}
+
+.active {
+    background: #3C070E;
+    height: 50px;
+    pointer-events: none;
 }

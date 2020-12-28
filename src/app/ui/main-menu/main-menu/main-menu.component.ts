@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {AppStateService, UserRole} from '../../../app-state.service';
+import { AppStateService, Pages, UserRole } from '../../../app-state.service';
 
 @Component({
     selector: 'app-main-menu',
@@ -9,9 +9,8 @@ import {AppStateService, UserRole} from '../../../app-state.service';
 export class MainMenuComponent implements OnInit {
 
     constructor(
-        private appStateService: AppStateService,
-    ) {
-    }
+        public appStateService: AppStateService,
+    ) {}
 
     ngOnInit(): void {
     }
@@ -20,5 +19,10 @@ export class MainMenuComponent implements OnInit {
         return this.appStateService.appState.currentUser;
     }
 
+    get currentPage() {
+        return this.appStateService.appState.currentPage;
+    }
+
+    pages = Pages;
     UserRole = UserRole;
 }

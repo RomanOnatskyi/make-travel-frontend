@@ -15,6 +15,7 @@ export class AppState {
     baseUrl = "http://localhost:8080/maketravel/api";
     currentUser: UserRole = UserRole.Unauthorized;
     userToken: string;
+    currentPage: Pages = Pages.Main;
 }
 
 export enum UserRole {
@@ -40,4 +41,19 @@ export enum OrderStatus {
     Accepted,
     Finished,
     Declined,
+}
+
+export enum Pages {
+
+    Authentication,
+    Registration,
+    Main,
+    Feedbacks,
+
+    Services,
+    MyHotels,
+
+    NewService,
+    Orders,
+    Clients,
 }
