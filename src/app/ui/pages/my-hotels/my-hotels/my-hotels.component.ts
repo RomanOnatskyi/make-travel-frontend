@@ -15,7 +15,7 @@ export class MyHotelsComponent implements OnInit {
     ) {}
 
     userHotels: UserHotel[];
-    feedback: Feedback;
+    feedback: Feedback = new Feedback();
 
     async ngOnInit() {
 
