@@ -96,9 +96,18 @@
     <div *ngIf="currentUser != UserRole.Unauthorized"
          class="profile-section">
 
-        <button class="authorization-menu-button" routerLink="/profile">
+        <button
+            class="authorization-menu-button"
+            (click)="appStateService.appState.currentPage = pages.Main"
+            routerLink="">
+
             <a class="authorization-items">Профиль</a>
         </button>
-    </div>
 
+        <button class="authorization-menu-button"
+            (click)="refreshPage()">
+
+            <a class="authorization-items">Выйти</a>
+        </button>
+    </div>
 </div>
