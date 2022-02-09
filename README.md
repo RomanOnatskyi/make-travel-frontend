@@ -1,27 +1,11 @@
 # MakeTravel
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.2.0.
+[Video demo](https://drive.google.com/file/d/1i-om-1RDPz3XyyNb56yVKuv0AqrlOiqe/view?usp=sharing)
 
-## Development server
+## Description
+MakeTravel – это групповой SCRUM проект, включающий в себя бекенд, фронтенд и мобильное приложение. Я руководил разработкой фронтенда. 
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+MakeTravel позволяет клиентам гостиницы заказывать услуги у ее сотрудников без обращения к каким-либо посредникам. Клиент может сделать заявку на услугу в приложении, после чего ее сможет принять любой свободный сотрудник отеля. Такая схема работы отеля также позволяет его администратору следить за занятостью сотрудника и его действиями в течение дня.
 
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+### Use-case diagram
+![image](https://user-images.githubusercontent.com/66105908/153275383-fcdccbab-c05b-4d3e-bde1-b337758261c6.png)
